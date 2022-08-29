@@ -72,7 +72,7 @@
   
 </head>
 <body>
-<nav>
+<nav id="navegador">
 
 <!-- TABELA DE ENTRADA DOS DADOS. -->
 
@@ -204,6 +204,12 @@
         else
             document.getElementById('textop').style.display = 'none';}
  
+    function impimir(){
+    var display = document.getElementById('navegador').style.display;
+        if(display == "none")
+            document.getElementById('navegador').style.display = 'block';
+        else
+            document.getElementById('navegador').style.display = 'none';}    
   
 </script>
 
