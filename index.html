@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.min.css" />
   <script src="modules/jquery/jquery-3.3.1.min.js"></script>
   <script src="modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="modules/jquery/jquery-1.12.4.min.js"></script>
@@ -72,7 +72,7 @@
   
 </head>
 <body>
-<nav id="navegador">
+<nav id="menu">
 
 <!-- TABELA DE ENTRADA DOS DADOS. -->
 
@@ -111,8 +111,8 @@
 </tr>
 
 </nav>
-<button onclick="imprimir()">
-  x
+<button class="btn" onclick="imprimir()">
+  ABRIR E FECHAR
 </button>
 <!-- PROCURAÇÃO -->
 
@@ -120,10 +120,10 @@
 <div id="corpo" class="corpo">
   
 <h1 id="procuração">PROCURAÇÃO</h1>
-  <br>
+  <br><br>
 <h2>
   OUTORGANTE:
-  </h2>
+  </h2><br>
   <p>
     <span id="nome" class="principal">Bruno de Oliveira,</span> brasileiro, 
     <span id="estado">solteiro</span>, 
@@ -136,20 +136,18 @@
     <span id="cidade">Canoas</span>/RS, CEP
     <span id="cep">92425-658</span>, email:<span id="email">bruno@brunoadvogado.com</span>,
     telefone de contato <span id="whatsapp"> 51 997540031</span>.
-  </p>
+  </p><br><br>
 <h2>
-  <br>
   OUTORGADO:
-  </h2>
+  </h2><br>
   <p>
     <span class="principal">Bruno de Oliveira</span>, brasileiro, casado, advogado, OAB/RS 116.393, inscrito no CPF sob número 016.071.780-95,
     inscrito no RG sob número 5100.810.752, email: bruno@brunoadvogado,com, whatsapp: (51) 99754-0031,
     com endereço profissional na rua Sevilha número 20, Brigadeira, Canoas/RS, CEP 92425-658.
   </p>
-<h2>
-  <br>
+<h2><br><br>
   PODERES:
-  </h2>
+  </h2><br>
   
   <p>
     Pelo presente instrumento particular de procuração o OUTORGANTE confere ao OUTORGADO amplos poderes para o foro em geral, com cláusula "ad-judicia et extra", em qualquer Juízo, Instância ou Tribunal, podendo propor contra quem de direito, as ações competentes e defendê-lo nas contrárias, seguindo umas e outras, até final decisão, usando os recursos legais e acompanhando-os, conferindo-lhe ainda, poderes especiais para receber citação inicial, confessar, e conhecer a procedência do pedido, desistir, renunciar ao direito sobre que se funda a ação, transigir, firmar compromissos ou acordos, receber, dar quitação e assinar declaração de hipossuficiência econômica, podendo agir em Juízo ou fora dele, assim como  substabelecer está a outrem, com ou sem reservas de iguais poderes, bem como todos os atos necessários ao fiel cumprimento deste mandato, o que dará como bom, firme e valioso.
@@ -181,7 +179,6 @@
     const iicep = document.getElementById('icep').value;
     const iiemail = document.getElementById('iemail').value;
     const iiwhatsapp = document.getElementById('iwhatsapp').value;
-
     
     document.getElementById('nome').innerText = iinome;
     document.getElementById('estado').innerText = iiestado;
@@ -204,12 +201,12 @@
         else
             document.getElementById('textop').style.display = 'none';}
  
-    function impimir(){
-    var display = document.getElementById('navegador').style.display;
+    function imprimir(){
+    var display = document.getElementById('menu').style.display;
         if(display == "none")
-            document.getElementById('navegador').style.display = 'block';
+            document.getElementById('menu').style.display = 'block';
         else
-            document.getElementById('navegador').style.display = 'none';}    
+            document.getElementById('menu').style.display = 'none';}
   
 </script>
 
