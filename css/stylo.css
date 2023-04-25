@@ -1,0 +1,39 @@
+.caixa{
+    padding: 10px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button{
+    margin: 5px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+.o-header {
+grid-area: header;
+}
+
+.o-main {
+grid-area: main;
+height: 90vh;
+}
+
+.o-footer {
+grid-area: footer;
+background-color: black;
+color: white;
+}
+
+.caixa{
+    max-width: 600px;
+}
