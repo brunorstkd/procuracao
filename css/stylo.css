@@ -1,9 +1,10 @@
 .caixa{
     padding: 10px;
-    background-color: blue;
+    background-color: rgb(241, 241, 241);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border-radius: 10px;
 }
 
 button{
@@ -25,10 +26,17 @@ grid-area: header;
 
 .o-main {
 grid-area: main;
-height: 90vh;
+display: flex;
+flex-direction: column;
 }
 
 .o-footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+size: 2px !important;
+
 grid-area: footer;
 background-color: black;
 color: white;
@@ -36,4 +44,9 @@ color: white;
 
 .caixa{
     max-width: 600px;
+    padding: 10px;
+}
+
+.caixao{
+    margin: 20px 0px 20px;
 }
