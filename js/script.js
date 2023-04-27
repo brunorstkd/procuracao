@@ -100,3 +100,17 @@ function cloneButtons() {
   }
 }
 cloneButtons();
+
+const rhButton = document.getElementById('rh');
+
+rhButton.addEventListener("click", function() {
+  document.getElementById('rhbox').style.display = 'block';
+  document.getElementById('outrosbox').style.display = 'none';
+});
+
+const voltarButton = document.getElementById('voltar');
+
+voltarButton.addEventListener("click", function() {
+  document.getElementById('rhbox').style.display = 'none';
+  document.getElementById('outrosbox').style.display = 'block';
+});

@@ -3,8 +3,30 @@
     background-color: rgb(241, 241, 241);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 10px;
+}
+
+.caixarh{
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.rhbtn{
+    width: 40vw;
+    font-size: 22px;
+    padding: 3px;
+}
+.voltarbtn{
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+  
 }
 
 button{
@@ -20,6 +42,30 @@ body {
       "footer";
   }
 
+  header{
+    padding: 4px;
+    margin: 1px 1px 1px;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+  }
+
+  .stnd{
+    height: 30px;
+    margin-top: 5px;
+    }
+
+.rhbox{
+    display: none;
+
+}
+
+.outrosbox{
+    display: block;
+
+}
+
 .o-header {
 grid-area: header;
 }
@@ -28,6 +74,7 @@ grid-area: header;
 grid-area: main;
 display: flex;
 flex-direction: column;
+margin-bottom: 20px;
 }
 
 .o-footer {
@@ -35,8 +82,8 @@ position: fixed;
 left: 0;
 bottom: 0;
 width: 100%;
-size: 2px !important;
-
+font-size: 10px;
+padding: 5px;
 grid-area: footer;
 background-color: black;
 color: white;
