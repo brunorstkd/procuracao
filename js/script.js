@@ -1,10 +1,10 @@
 
-const urlIlsa = "https://google.com";
-const urlAlexandro = "https://example.com";
-const urlFran = "https://stackoverflow.com";
+const urlIlsa = "https://forms.gle/XGBCdWYfLQgpYfxk7";
+const urlAlexandro = "https://forms.gle/XGBCdWYfLQgpYfxk7";
+const urlFran = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlJefferson = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urMulta = "https://github.com";
-const urlcurriculo = "https://github.com";
+const urMulta = "https://wa.me/5551992362534";
+const urlcurriculo = "https://wa.me/5551992684379";
 
 const multaButton = document.getElementById("multa");
 const curriculoButton = document.getElementById("curriculo");
