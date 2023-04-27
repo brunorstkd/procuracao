@@ -3,7 +3,7 @@ const urlIlsa = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlAlexandro = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlFran = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlJefferson = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urMulta = "https://wa.me/5551992362534";
+const urlMulta = "https://wa.me/5551992362534";
 const urlcurriculo = "https://wa.me/5551992684379";
 
 const multaButton = document.getElementById("multa");
