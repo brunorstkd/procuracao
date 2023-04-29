@@ -3,13 +3,26 @@ const urlIlsa = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlAlexandro = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlFran = "https://forms.gle/XGBCdWYfLQgpYfxk7";
 const urlJefferson = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urlMulta = "https://wa.me/5551992362534";
 const urlcurriculo = "https://wa.me/5551992684379";
 
 const multaButton = document.getElementById("multa");
 const curriculoButton = document.getElementById("curriculo");
+const multaButton2 = document.getElementById("multa2");
+
 
 multaButton.addEventListener("click", function() {
+  document.getElementById('multabox').style.display = 'flex';
+  document.getElementById('outrosbox').style.display = 'none';
+});
+
+
+multaButton2.addEventListener("click", function() {
+  const urlpt1 = "https://wa.me/5551992362534?text="
+  const urlpt2 = "Meu nome é: " + document.getElementById('nomemotorista').value;
+  const urlpt3 = "%0AMinha placa é: " + document.getElementById('placa').value;
+  const urlpt4 = "%0APeriodo da multa: " + document.getElementById('periodo').value;
+  const urlMulta = urlpt1+urlpt2+urlpt3+urlpt4;
+  console.log(urlMulta)
   window.open(urlMulta);
 });
 

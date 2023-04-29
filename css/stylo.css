@@ -17,6 +17,24 @@
     border-radius: 10px;
 }
 
+.multabox{
+    padding: 10px;
+    background-color: rgba(26, 212, 26, 0.692);
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    max-width: 600px;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.entrada{
+    width: 90%;
+    text-align: center;
+    margin: 5px;
+}
+
 .rhbtn{
     width: 40vw;
     font-size: 22px;
@@ -75,6 +93,8 @@ grid-area: main;
 display: flex;
 flex-direction: column;
 margin-bottom: 20px;
+text-align: center;
+justify-content: center;
 }
 
 .o-footer {
