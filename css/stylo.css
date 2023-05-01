@@ -29,6 +29,24 @@
 
 }
 
+.atualizacaobox{
+    background-color: rgba(0, 132, 255, 0.384);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.atualizacao{
+    text-align: left;
+    padding-left: 40px;
+}
+
+li{
+    font-size: small;
+}
+
 .entrada{
     width: 90%;
     text-align: center;
