@@ -1,8 +1,8 @@
 
-const urlIlsa = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urlAlexandro = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urlFran = "https://forms.gle/XGBCdWYfLQgpYfxk7";
-const urlJefferson = "https://forms.gle/XGBCdWYfLQgpYfxk7";
+const urlIlsa = "https://forms.gle/NC7HxjiFKeNRfVdE7";
+const urlAlexandro = "https://forms.gle/NC7HxjiFKeNRfVdE7";
+const urlFran = "https://forms.gle/NC7HxjiFKeNRfVdE7";
+const urlJefferson = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlcurriculo = "https://wa.me/5551992684379";
 
 const multaButton = document.getElementById("multa");
