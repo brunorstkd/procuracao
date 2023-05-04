@@ -78,6 +78,9 @@
 				<tbody id="tbody">
 				</tbody>
 			</table>
+            <div>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrHTG3ja4a-h8HmX0NAS2EeQBeRguIIkAhG10OXOn8CVwlCaYDFsePAmUfJtFQxFAdBQGIJbTnzUlL/pubhtml?widget=true&amp;headers=false" style="width: 650px; height: 100%;"></iframe>            </div>
+
 		</div>
 	</div>
 	<script>
@@ -92,6 +95,7 @@
 			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
 			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
             console.log("click no botão incluir");
+            alert('Registrando, aguarde!');
             event.preventDefault();
             const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
             var xhttp = new XMLHttpRequest();
@@ -101,7 +105,7 @@
             console.log(xhttp.responseText);
             console.log(url)
 
-            
+
             
             atualizarTabela();
 		}
