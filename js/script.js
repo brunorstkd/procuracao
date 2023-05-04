@@ -1,6 +1,6 @@
 
 const urlIlsa = "https://forms.gle/NC7HxjiFKeNRfVdE7";
-const urlAlexandro = "https://forms.gle/NC7HxjiFKeNRfVdE7";
+const urlAlexandro = "https://forms.gle/46Vs5KMHPBuRiVFB9";
 const urlFran = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlJefferson = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlcurriculo = "https://wa.me/5551992684379";
@@ -126,4 +126,23 @@ const voltarButton = document.getElementById('voltar');
 voltarButton.addEventListener("click", function() {
   document.getElementById('rhbox').style.display = 'none';
   document.getElementById('outrosbox').style.display = 'block';
+});
+
+
+const incluir = document.getElementById('iniciar');
+
+incluir.style.backgroundColor = 'black';
+
+incluir.addEventListener("submit", function(event) {
+    alert("registado com sucesso!");
+    console.log("click no botão incluir");
+    event.preventDefault();
+    const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url, false);
+    xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+
+    console.log(xhttp.responseText);
+    console.log(url)
+
 });

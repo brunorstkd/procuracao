@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Central de Agendamento</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		.form input {
+			margin-bottom: 10px;
+		}
+
+		.form button {
+			margin-top: 10px;
+		}
+
+		.agendamentos {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		.agendamentos table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 800px;
+			text-align: center;
+		}
+
+		.agendamentos th, .agendamentos td {
+			padding: 10px;
+			border: 1px solid black;
+		}
+
+		.agendamentos th {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="form">
+			<label>Data Saída:</label>
+			<input type="date" id="data-saida">
+			<label>Horário de Saída:</label>
+			<input type="time" id="horario-saida">
+			<label>Previsão Horário Retorno:</label>
+			<input type="time" id="horario-retorno">
+			<label>Destino:</label>
+			<input type="text" id="destino">
+            <label>Motorista:</label>
+			<input type="text" id="motorista">
+			<button id="iniciar" onclick="incluirAgendamento()">Incluir</button>
+		</div>
+		<div class="agendamentos">
+			<h2>Agendamentos</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Data Saída</th>
+						<th>Horário de Saída</th>
+						<th>Previsão Horário Retorno</th>
+						<th>Destino</th>
+                        <th>Motorista</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+		let agendamentos = [];
+
+		function incluirAgendamento() {
+			const dataSaida = document.getElementById('data-saida').value;
+			const horarioSaida = document.getElementById('horario-saida').value;
+			const horarioRetorno = document.getElementById('horario-retorno').value;
+			const destino = document.getElementById('destino').value;
+            const motorista = document.getElementById('motorista').value;
+			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
+			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
+            console.log("click no botão incluir");
+            event.preventDefault();
+            const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, false);
+            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+        
+            console.log(xhttp.responseText);
+            console.log(url)
+            
+            atualizarTabela();
+		}
+
+		function atualizarTabela() {
+			const tbody = document.getElementById('tbody');
+			tbody.innerHTML = '';
+			agendamentos.forEach(agendamento => {
+				const tr = document.createElement('tr');
+				const tdDataSaida = document.createElement('td');
+				tdDataSaida.innerText = agendamento.dataSaida;
+				tr.appendChild(tdDataSaida);
+				const tdHorarioSaida = document.createElement('td');
+                tdHorarioSaida.innerText = agendamento.horarioSaida;
+				tr.appendChild(tdHorarioSaida);
+				const tdHorarioRetorno = document.createElement('td');
+				tdHorarioRetorno.innerText = agendamento.horarioRetorno;
+				tr.appendChild(tdHorarioRetorno);
+				const tdDestino = document.createElement('td');
+				tdDestino.innerText = agendamento.destino;
+				tr.appendChild(tdDestino);
+                const tdMotorista = document.createElement('td');
+				tdMotorista.innerText = agendamento.motorista;
+				tr.appendChild(tdMotorista);
+				tbody.appendChild(tr);
+			});
+		}
+
+	</script>
+</body>
+</html>
+
