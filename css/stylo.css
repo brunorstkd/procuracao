@@ -17,6 +17,26 @@
     border-radius: 10px;
 }
 
+.agendamentobox{
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.agendamentobox2{
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+
 .multabox{
     padding: 10px;
     background-color: rgba(26, 212, 26, 0.692);
@@ -41,6 +61,8 @@
     align-items: center;
     padding: 5px;
 }
+
+
 
 .atualizacao{
     text-align: left;
