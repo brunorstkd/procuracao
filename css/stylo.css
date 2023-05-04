@@ -139,3 +139,23 @@ color: white;
 .caixao{
     margin: 20px 0px 20px;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px !important;
+    align-items: center;
+}
+
+.grupo{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 600px;
+    min-width: 350px;
+    margin: 5px 0px 5px;
+    border: solid 2px black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
