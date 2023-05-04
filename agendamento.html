@@ -24,16 +24,26 @@
 <main class="o-main">
 <div class="text-center caixao agendamentobox">
 		<div class="agendamentobox2 container">
-			<label>Data Saída:</label>
+			<div class="grupo">
+      <label>Data Saída:</label>
 			<input type="date" id="data-saida">
+      </div>
+      <div class="grupo"> 
 			<label>Horário de Saída:</label>
 			<input type="time" id="horario-saida">
+      </div>
+      <div class="grupo">
 			<label>Previsão Horário Retorno:</label>
 			<input type="time" id="horario-retorno">
+      </div>
+      <div class="grupo">
 			<label>Destino:</label>
 			<input type="text" id="destino">
-            <label>Motorista:</label>
+      </div>
+      <div class="grupo">
+      <label>Motorista:</label>
 			<input type="text" id="motorista">
+      </div>
 			<button id="iniciar" onclick="incluirAgendamento()">Incluir</button>
 		</div>
 		<div class="agendamentos">
