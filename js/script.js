@@ -5,6 +5,27 @@ const urlFran = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlJefferson = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlcurriculo = "https://wa.me/5551992684379";
 
+
+const btnComprovante = document.getElementById('comprovante');
+const inputNome = document.getElementById('comprovantenomemotorista');
+const spanErro = document.getElementById('comprovantenomemotorista-erro');
+
+btnComprovante.addEventListener('click', () => {
+  if (!inputNome.value) {
+    spanErro.textContent = 'Por favor, preencha seu nome completo.';
+  } else {
+    // Faça aqui o que você quer que aconteça quando o formulário é enviado com sucesso
+    const urlpt1 = "https://wa.me/555199258?text="
+    const urlpt2 = "Meu nome é: " + document.getElementById('comprovantenomemotorista').value;
+    const urlpt3 = "%0ASegue abaixo comprovante de pagamento do PIX";
+    const urlMulta = urlpt1+urlpt2+urlpt3;
+    console.log(urlMulta)
+    window.open(urlMulta);
+  
+  }
+});
+
+
 const multaButton = document.getElementById("multa");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
