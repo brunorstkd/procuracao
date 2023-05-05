@@ -15,7 +15,7 @@ btnComprovante.addEventListener('click', () => {
     spanErro.textContent = 'Por favor, preencha seu nome completo.';
   } else {
     // Faça aqui o que você quer que aconteça quando o formulário é enviado com sucesso
-    const urlpt1 = "https://wa.me/555199258?text="
+    const urlpt1 = "https://wa.me/5551992589408?text="
     const urlpt2 = "Meu nome é: " + document.getElementById('comprovantenomemotorista').value;
     const urlpt3 = "%0ASegue abaixo comprovante de pagamento do PIX";
     const urlMulta = urlpt1+urlpt2+urlpt3;
