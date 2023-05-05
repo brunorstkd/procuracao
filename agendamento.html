@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/stylo.css" />
   <script src="js/bootstrap.min.js"></script>
   
-<title>Requisição Mutuo - RH</title>
+<title>Agendamento GOL - RH</title>
 
 </head>
 <body>
@@ -49,7 +49,7 @@
 		<div class="agendamentos">
 			<h2>Agendamentos</h2>
       <p>Caso seu agendamento não aparceça, <a href='https://docs.google.com/spreadsheets/d/1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA/edit?usp=sharing'>clique aqui</a></p>
-      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrHTG3ja4a-h8HmX0NAS2EeQBeRguIIkAhG10OXOn8CVwlCaYDFsePAmUfJtFQxFAdBQGIJbTnzUlL/pubhtml?widget=true&amp;headers=false" scrolling="yes"> </iframe>      
+      <iframe id='iframe' src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrHTG3ja4a-h8HmX0NAS2EeQBeRguIIkAhG10OXOn8CVwlCaYDFsePAmUfJtFQxFAdBQGIJbTnzUlL/pubhtml?widget=true&amp;headers=false" scrolling="yes"> </iframe>      
 	</div>
 	<script>
 		let agendamentos = [];
@@ -82,6 +82,8 @@
 			setTimeout(function() {
 			//your code to be executed after 1 second
 			}, delayInMilliseconds);
+      const frame = document.getElementById('iframe');
+      frame.location.reload();
 
 		};
 	</script>
