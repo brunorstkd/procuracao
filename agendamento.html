@@ -63,8 +63,8 @@
 			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
 			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
             console.log("click no botão incluir");
-            alert('Registrando, aguarde!');
             event.preventDefault();
+            alert('Agendamento realizado com sucesso!');
             const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", url, false);
@@ -72,7 +72,7 @@
         
             console.log(xhttp.responseText);
             console.log(url)
-            alert('Agendamento realizado com sucesso!');
+            
 
 
             
@@ -82,8 +82,7 @@
 			setTimeout(function() {
 			//your code to be executed after 1 second
 			}, delayInMilliseconds);
-      const frame = document.getElementById('iframe');
-      frame.location.reload();
+      document.getElementById('iframe').contentDocument.location.reload(true);
 
 		};
 	</script>

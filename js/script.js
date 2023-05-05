@@ -127,21 +127,3 @@ voltarButton.addEventListener("click", function() {
   document.getElementById('rhbox').style.display = 'none';
   document.getElementById('outrosbox').style.display = 'block';
 });
-
-
-
-
-  gapi.client.init({
-    apiKey: 'SUA_CHAVE_DE_API',
-    discoveryDocs: ['https://docs.google.com/spreadsheets/d/1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA'],
-  }).then(function() {
-    return gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: 'ID_DA_PLANILHA',
-      range: 'NOME_DA_RANGE',
-    });
-  }).then(function(response) {
-    var values = response.result.values;
-    // Manipule os dados recebidos e crie a tabela em seu site.
-  }, function(reason) {
-    console.error('Erro: ' + reason.result.error.message);
-  });
