@@ -29,9 +29,17 @@
     padding: 5px;
 }
 
+.agendamentos{
+    width: 100vw;
+    text-align: center;
+    align-items: center;
+}
+
 iframe{
     height: 500px;
-    width: 500px;
+    width: 670px;
+    text-align: center;
+    align-items: center;
   }
   
 .multabox{
@@ -178,3 +186,71 @@ form{
     border-radius: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }    
+    .agendamentobox2{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        max-width: 600px;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 5px;
+    }
+    
+    .agendamentos{
+        width: 100vw;
+        text-align: center;
+        align-items: center;
+    }
+    
+    iframe{
+        height: 500px;
+        width: 670px;
+        text-align: center;
+        align-items: center;
+      }
+
+    .entrada{
+        width: 90%;
+        text-align: center;
+        margin: 5px;
+    }
+    
+    button{
+        margin: 5px;
+    }
+    
+    .caixa{
+        max-width: 600px;
+        padding: 10px;
+    }
+    
+    .caixao{
+        margin: 20px 0px 20px;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        max-width: 600px !important;
+        align-items: center;
+    }
+    
+    .grupo{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        max-width: 600px;
+        min-width: 350px;
+        margin: 5px 0px 5px;
+        border: solid 2px black;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: x-large;
+    }
+    
+  }

@@ -44,10 +44,13 @@
       <label>Motorista:</label>
 			<input type="text" id="motorista">
       </div>
-			<button id="iniciar" onclick="incluirAgendamento()">Incluir</button>
+			<button id="iniciar" class="btn btn-danger btn-lg" onclick="incluirAgendamento()">Agendar</button>
 		</div>
 		<div class="agendamentos">
 			<h2>Agendamentos</h2>
+			<button onclick="authenticate().then(loadClient)">authorize and load</button>
+<button onclick="execute()">execute</button>
+
       <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrHTG3ja4a-h8HmX0NAS2EeQBeRguIIkAhG10OXOn8CVwlCaYDFsePAmUfJtFQxFAdBQGIJbTnzUlL/pubhtml?widget=true&amp;headers=false" scrolling="yes"> </iframe>      
 	</div>
 	<script>
@@ -75,34 +78,16 @@
 
 
             
-            atualizarTabela();
-		}
+			location.reload();
+			var delayInMilliseconds = 3000; //1 second
 
-		function atualizarTabela() {
-			const tbody = document.getElementById('tbody');
-			tbody.innerHTML = '';
-			agendamentos.forEach(agendamento => {
-				const tr = document.createElement('tr');
-				const tdDataSaida = document.createElement('td');
-				tdDataSaida.innerText = agendamento.dataSaida;
-				tr.appendChild(tdDataSaida);
-				const tdHorarioSaida = document.createElement('td');
-                tdHorarioSaida.innerText = agendamento.horarioSaida;
-				tr.appendChild(tdHorarioSaida);
-				const tdHorarioRetorno = document.createElement('td');
-				tdHorarioRetorno.innerText = agendamento.horarioRetorno;
-				tr.appendChild(tdHorarioRetorno);
-				const tdDestino = document.createElement('td');
-				tdDestino.innerText = agendamento.destino;
-				tr.appendChild(tdDestino);
-                const tdMotorista = document.createElement('td');
-				tdMotorista.innerText = agendamento.motorista;
-				tr.appendChild(tdMotorista);
-				tbody.appendChild(tr);
-			});
-		}
+			setTimeout(function() {
+			//your code to be executed after 1 second
+			}, delayInMilliseconds);
 
+		};
 	</script>
+
 
 
 

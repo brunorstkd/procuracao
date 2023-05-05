@@ -129,20 +129,19 @@ voltarButton.addEventListener("click", function() {
 });
 
 
-const incluir = document.getElementById('iniciar');
 
-incluir.style.backgroundColor = 'black';
 
-incluir.addEventListener("submit", function(event) {
-    alert("registado com sucesso!");
-    console.log("click no botão incluir");
-    event.preventDefault();
-    const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url, false);
-    xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-
-    console.log(xhttp.responseText);
-    console.log(url)
-
-});
+  gapi.client.init({
+    apiKey: 'SUA_CHAVE_DE_API',
+    discoveryDocs: ['https://docs.google.com/spreadsheets/d/1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA'],
+  }).then(function() {
+    return gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: 'ID_DA_PLANILHA',
+      range: 'NOME_DA_RANGE',
+    });
+  }).then(function(response) {
+    var values = response.result.values;
+    // Manipule os dados recebidos e crie a tabela em seu site.
+  }, function(reason) {
+    console.error('Erro: ' + reason.result.error.message);
+  });
