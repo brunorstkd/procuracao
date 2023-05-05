@@ -252,5 +252,8 @@ form{
         border-radius: 10px;
         font-size: x-large;
     }
+    input{
+        width: 100vw !important;
+    }
     
   }
