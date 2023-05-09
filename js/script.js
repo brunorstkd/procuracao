@@ -36,7 +36,7 @@ curriculoButton.addEventListener("click", function() {
 
 function cloneButtons() {
   // Clone Ilsa button
-  const gestores_ilsa = ["Thaynara","Marcio","Ismael/Juliano"];
+  const gestores_ilsa = ["Thaynara","Marcelo","Ismael/Juliano"];
   const ilsaButton = document.getElementById("ilsa");
   const divBotao = document.getElementById("div_botao");
 
@@ -76,7 +76,7 @@ function cloneButtons() {
   }
 
   // Clone Fran button
-  const gestores_fran = ["Wellington","Gelisson","Rafael"];
+  const gestores_fran = ["Wellington","Rafael"];
   const franButton = document.getElementById("fran");
 
   franButton.addEventListener("click", function() {
@@ -97,7 +97,7 @@ function cloneButtons() {
   // Clone Jefferson button
 
   const jeffersonButton = document.getElementById("jefferson");
-  const gestores_jefferson = ["Francisco","Angela"];
+  const gestores_jefferson = ["Francisco","Gelison"];
 
   jeffersonButton.addEventListener("click", function() {
     window.open(urlJefferson);
