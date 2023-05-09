@@ -58,7 +58,7 @@ iframe{
 .atualizacaobox{
     padding: 10px;
     background-color: rgba(26, 212, 26, 0.692);
-    display: flex;
+    display: none;
     flex-direction: column;
     border-radius: 10px;
     max-width: 600px;
