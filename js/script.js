@@ -2,7 +2,7 @@
 const urlIlsa = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlAlexandro = "https://forms.gle/46Vs5KMHPBuRiVFB9";
 const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
-const urlJefferson = "https://forms.gle/NC7HxjiFKeNRfVdE7";
+const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlcurriculo = "https://wa.me/5551992684379";
 
 
