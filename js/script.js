@@ -6,8 +6,6 @@ const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlcurriculo = "https://wa.me/5551992684379";
 
 
-
-
 const multaButton = document.getElementById("multa");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
