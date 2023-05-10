@@ -94,6 +94,12 @@ function cloneButtons() {
     });
   }
 
+  const franButton2 = document.getElementById("fran2");
+
+  franButton2.addEventListener("click", function() {
+    window.open(urlFran);
+  });
+
   // Clone Jefferson button
 
   const jeffersonButton = document.getElementById("jefferson");
@@ -116,6 +122,15 @@ function cloneButtons() {
   }
 }
 cloneButtons();
+
+const jeffersonButton2 = document.getElementById("jefferson2");
+const gestores_jefferson = ["Francisco","Gelison"];
+
+  jeffersonButton2.addEventListener("click", function() {
+    window.open(urlJefferson);
+  });
+  
+
 
 const rhButton = document.getElementById('rh');
 
