@@ -34,7 +34,7 @@ curriculoButton.addEventListener("click", function() {
 
 function cloneButtons() {
   // Clone Ilsa button
-  const gestores_ilsa = ["Thaynara","Marcelo","Ismael/Juliano"];
+  const gestores_ilsa = ["Marcelo","Ismael", "Juliano"];
   const ilsaButton = document.getElementById("ilsa");
   const divBotao = document.getElementById("div_botao");
 
@@ -55,7 +55,7 @@ function cloneButtons() {
   }
 
   // Clone Alexandro button
-  const gestores_alexandro = ["Rodolfo","Eduardo","Anderson"];
+  const gestores_alexandro = ["Alan","Rodolfo","Eduardo","Anderson"];
   const alexandroButton = document.getElementById("alexandro");
 
   alexandroButton.addEventListener("click", function() {
