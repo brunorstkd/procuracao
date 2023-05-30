@@ -8,6 +8,23 @@
     border-radius: 10px;
 }
 
+.tabelamae {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Opcional: centralizar horizontalmente também */
+    margin-bottom: 20px;
+    padding: 1px;
+  }
+  
+
+table {
+    width: 50vw;
+    background-color: rgb(177, 175, 175);
+    
+  }
+  
+
+
 .caixarh{
     padding: 10px;
     background-color: rgb(241, 241, 241);
@@ -33,6 +50,7 @@
     width: 100vw;
     text-align: center;
     align-items: center;
+    justify-content: center; /* Opcional: centralizar horizontalmente também */
 }
 
 iframe{
