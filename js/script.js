@@ -4,12 +4,15 @@ const urlAlexandro = "https://forms.gle/46Vs5KMHPBuRiVFB9";
 const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
 const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlcurriculo = "https://wa.me/5551992684379";
-
+const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
 
 const multaButton = document.getElementById("multa");
+const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
 
+paulaButton.addEventListener("click",function() {
+  window.open(urlPaula);});
 
 multaButton.addEventListener("click", function() {
   document.getElementById('multabox').style.display = 'flex';
@@ -54,6 +57,8 @@ function cloneButtons() {
     });
   }
 
+
+  
   // Clone Alexandro button
   const gestores_alexandro = ["Alan","Rodolfo","Eduardo","Anderson"];
   const alexandroButton = document.getElementById("alexandro");
@@ -97,6 +102,8 @@ function cloneButtons() {
   franButton2.addEventListener("click", function() {
     window.open(urlFran);
   });
+
+  
 
   // Clone Jefferson button
 
