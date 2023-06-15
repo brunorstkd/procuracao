@@ -81,6 +81,19 @@ iframe{
 
 }
 
+.curriculobox{
+    padding: 10px;
+    background-color: rgba(240, 240, 240, 0.692);
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    max-width: 600px;
+    justify-content: space-evenly;
+    align-items: center;
+    
+
+}
+
 .atualizacaobox{
     padding: 10px;
     background-color: rgba(26, 212, 26, 0.692);

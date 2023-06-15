@@ -5,11 +5,21 @@ const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
 const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
+const urlPaulaWhatsapp = "https://wa.me/5519991184772";
 
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
+
+function paulawhatsapp(){
+  window.open(urlPaulaWhatsapp);
+};
+
+
+function recrutamentowhatsapp(){
+  window.open(urlcurriculo);
+};
 
 paulaButton.addEventListener("click",function() {
   window.open(urlPaula);});
@@ -30,9 +40,6 @@ multaButton2.addEventListener("click", function() {
   window.open(urlMulta);
 });
 
-curriculoButton.addEventListener("click", function() {
-  window.open(urlcurriculo);
-});
 
 
 function cloneButtons() {
@@ -150,3 +157,12 @@ voltarButton.addEventListener("click", function() {
   document.getElementById('rhbox').style.display = 'none';
   document.getElementById('outrosbox').style.display = 'block';
 });
+
+
+
+
+curriculoButton.addEventListener("click", function() {
+  document.getElementById('curriculobox').style.display = 'block';
+  document.getElementById('outrosbox').style.display = 'none';
+});
+
