@@ -25,7 +25,7 @@
 </header>
 <main class="o-main">
 <div class="text-center">
-		<div class="agendamentobox2 container">
+		<div class="agendamentobox2 container" id='agendamentobox2'>
 			<div class="grupo">
       <label>Data Saída:</label>
 			<input type="date" id="data-saida">
@@ -191,6 +191,12 @@ function formatTime(timeString) {
         console.log("Valor da variável horarioRetorno:", horarioRetorno);
       }
 
+      const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+      divAgendamentoBox2.innerHTML = ''; // Limpa o conteúdo atual da div
+      const h1Element = document.createElement('h1');
+      h1Element.textContent = 'Agendamento realizado com sucesso';
+
+      divAgendamentoBox2.appendChild(h1Element);
 			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
 			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
             console.log("click no botão incluir");
@@ -199,13 +205,9 @@ function formatTime(timeString) {
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", url, false);
             xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-            alert('Agendamento realizado com sucesso!');
             console.log(xhttp.responseText);
             console.log(url)
-          
-            
-
-
+                  
 			var delayInMilliseconds = 2000; //1 second
 
 			setTimeout(function() {
