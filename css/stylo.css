@@ -317,7 +317,7 @@ form{
         width: 100vw !important;
     }
     table,thead, th, td, tr {
-        font-size: small;
+        font-size: x-small;
       }
 
     
