@@ -316,10 +316,18 @@ form{
     input{
         width: 100vw !important;
     }
+    table,thead, th, td, tr {
+        font-size: small;
+      }
+
     
   }
 
   .titulored{
     color: red;
-    
+
+  }
+
+  table{
+
   }
