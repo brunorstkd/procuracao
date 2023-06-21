@@ -55,8 +55,7 @@
 
   </div>
 	<script>
-
-  async function fetchAndRenderTableData() {
+  window.addEventListener('DOMContentLoaded', async () => {
   const spreadsheetID = '1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA';
   const url = `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json`;
 
@@ -118,11 +117,7 @@
   const tabelaAgendamento = document.getElementById('tabela-agendamento');
   tabelaAgendamento.innerHTML = '';
   tabelaAgendamento.appendChild(table);
-}
-
-window.addEventListener('DOMContentLoaded', fetchAndRenderTableData);
-setInterval(fetchAndRenderTableData, 3000);
-
+});
 
 function formatDate(dateString) {
   const regex = /Date\((\d+),(\d+),(\d+)\)/;
@@ -213,7 +208,7 @@ function formatTime(timeString) {
             console.log(xhttp.responseText);
             console.log(url)
                   
-			var delayInMilliseconds = 10000; //1 second
+			var delayInMilliseconds = 2000; //1 second
 
 			setTimeout(function() {
 			//your code to be executed after 1 second
