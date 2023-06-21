@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/stylo.css" />
   <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
   
 <title>Agendamento GOL - RH</title>
 
@@ -20,7 +22,7 @@
 
   <h1> Canal de Atendimento - RH</h1>
   <h2>Agendamentos - GOL</h2>
-  <p>Favor verificar se não há outro agendamento para mesma data  e hoário antes de finalizar</p>
+  <h1 class='titulored'>VERSÃO TESTE DO VALIDADOR</h1>
 </header>
 <main class="o-main">
 <div class="text-center">
@@ -140,6 +142,7 @@ function formatTime(timeString) {
   }
   return '';
 }
+
 		let agendamentos = [];
 
 		function incluirAgendamento() {
@@ -148,6 +151,46 @@ function formatTime(timeString) {
 			const horarioRetorno = document.getElementById('horario-retorno').value;
 			const destino = document.getElementById('destino').value;
       const motorista = document.getElementById('motorista').value;
+
+      const tabela = document.getElementById('tabela-agendamento');
+      const linhas = tabela.getElementsByTagName('tr');
+      console.log('baixo o formato');
+      
+      for (let i = 1; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        const dataCelula = moment(celulas[0].textContent, 'DD/MM/YYYY').format('YYYY-MM-DD');
+        const horarioSaidaCelula = celulas[1].textContent;
+        const horarioRetornoCelula = celulas[2].textContent;
+
+        if (dataCelula === dataSaida) {
+          console.log("Há datas iguais");
+          if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
+            alert('Horário já agendado. Cuidado com agendamento em duplicidade.');
+            return;
+          }
+        
+          // Verificar se horarioSaida está agendado no intervalo entre horarioSaidaCelula e horarioRetornoCelula
+          if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+            alert('Esse horário de saída está agendado. Por favor, escolha outro horário.');
+            return;
+          }
+
+          if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+            alert('Esse horário de retorno está agendado. Por favor, escolha outro horário.');
+            return;
+          }
+        };
+
+
+      
+        console.log("Iteração do loop:", i);
+        console.log("Valor da célula de data:", dataCelula);
+        console.log("Valor da variável dataSaida:", dataSaida);
+        console.log("Valor da célula de horário de saída:", horarioSaidaCelula);
+        console.log("Valor da variável horarioSaida:", horarioSaida);
+        console.log("Valor da célula de horário de retorno:", horarioRetornoCelula);
+        console.log("Valor da variável horarioRetorno:", horarioRetorno);
+      }
 
 			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
 			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
@@ -160,8 +203,10 @@ function formatTime(timeString) {
             alert('Agendamento realizado com sucesso!');
             console.log(xhttp.responseText);
             console.log(url)
+          
             
-            
+
+
 			var delayInMilliseconds = 2000; //1 second
 
 			setTimeout(function() {
@@ -174,6 +219,28 @@ function formatTime(timeString) {
     
 		
 		};
+    // Verificar se a data e o horário já existem na tabela
+      console.log('Abaixo a tabela');
+      const tabela = document.getElementById('tabela-agendamento');
+      const linhas = tabela.getElementsByTagName('tr');
+      console.log('baixo o formato');
+      
+      for (let i = 1; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        const dataCelula = celulas[0].textContent;
+        const horarioSaidaCelula = celulas[1].textContent;
+        const horarioRetornoCelula = celulas[2].textContent;
+      
+        console.log("Iteração do loop:", i);
+        console.log("Valor da célula de data:", dataCelula);
+        console.log("Valor da variável dataSaida:", dataSaida);
+        console.log("Valor da célula de horário de saída:", horarioSaidaCelula);
+        console.log("Valor da variável horarioSaida:", horarioSaida);
+        console.log("Valor da célula de horário de retorno:", horarioRetornoCelula);
+        console.log("Valor da variável horarioRetorno:", horarioRetorno);
+      }
+
+    
 	</script>
 
 
