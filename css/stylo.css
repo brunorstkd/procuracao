@@ -15,6 +15,11 @@
     margin-bottom: 20px;
     padding: 1px;
   }
+
+.red-text {
+    color: red;
+  }
+  
   
 
 table {

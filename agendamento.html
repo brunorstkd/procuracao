@@ -170,17 +170,32 @@ function formatTime(timeString) {
           console.log("Há datas iguais");
           if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
             alert('Horário já agendado. Cuidado com agendamento em duplicidade.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Horário já agendado. Cuidado com agendamento em duplicidade.';
+            divAgendamentoBox2.appendChild(h1Element);
             return;
           }
         
           // Verificar se horarioSaida está agendado no intervalo entre horarioSaidaCelula e horarioRetornoCelula
           if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
             alert('Esse horário de saída está agendado. Por favor, escolha outro horário.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Esse horário de saída está agendado. Por favor, escolha outro horário.';
+            divAgendamentoBox2.appendChild(h1Element);
             return;
           }
 
           if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
             alert('Esse horário de retorno está agendado. Por favor, escolha outro horário.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Esse horário de retorno está agendado. Por favor, escolha outro horário.';
+            divAgendamentoBox2.appendChild(h1Element);
             return;
           }
         };
