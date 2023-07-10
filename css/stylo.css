@@ -16,11 +16,16 @@
     padding: 1px;
   }
 
-.red-text {
+  .red-border {
+    border: 1px solid red;
+  }
+  .red-text {
     color: red;
   }
   
-  
+  .green-text {
+    color: red;
+  }
 
 table {
     width: 50vw;

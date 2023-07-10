@@ -261,67 +261,6 @@ function formatTime(timeString) {
         console.log("Valor da variável horarioRetorno:", horarioRetorno);
       }
 
-function pintarInputsRepetidos() {
-  const dataSaida = document.getElementById('data-saida').value;
-  const horarioSaida = document.getElementById('horario-saida').value;
-  const horarioRetorno = document.getElementById('horario-retorno').value;
-
-  const tabela = document.getElementById('tabela-agendamento');
-  const linhas = tabela.getElementsByTagName('tr');
-  console.log('baixo o formato');
-
-  for (let i = 1; i < linhas.length; i++) {
-    const celulas = linhas[i].getElementsByTagName('td');
-    const dataCelula = moment(celulas[0].textContent, 'DD/MM/YYYY').format('YYYY-MM-DD');
-    const horarioSaidaCelula = celulas[1].textContent;
-    const horarioRetornoCelula = celulas[2].textContent;
-
-    if (dataCelula === dataSaida) {
-      console.log("Há datas iguais");
-      if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
-        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
-        const h1Element = document.createElement('h1');
-        // Pintar os inputs de vermelho
-        document.getElementById('data-saida').classList.add('red-border');
-        document.getElementById('horario-saida').classList.add('red-border');
-        document.getElementById('horario-retorno').classList.add('red-border');
-
-        return;
-      }
-
-      if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
-        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
-
-
-        // Pintar os inputs de vermelho
-        document.getElementById('horario-saida').classList.add('red-border');
-
-        return;
-      }
-
-      if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
-        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
-        const h1Element = document.createElement('h1');
-
-        // Pintar os inputs de vermelho
-        document.getElementById('horario-retorno').classList.add('red-border');
-
-        return;
-      }
-    }
-  }
-  document.getElementById('data-saida').classList.replace('red-border', 'green-border');
-  document.getElementById('horario-saida').classList.replace('red-border', 'green-border');
-  document.getElementById('horario-retorno').classList.replace('red-border', 'green-border');
-
-
-
-}
-document.getElementById('data-saida').addEventListener('keyup', pintarInputsRepetidos);
-document.getElementById('horario-saida').addEventListener('keyup', pintarInputsRepetidos);
-document.getElementById('horario-retorno').addEventListener('keyup', pintarInputsRepetidos);
-
-
     
 	</script>
 
