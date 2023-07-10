@@ -19,12 +19,15 @@
   .red-border {
     border: 1px solid red;
   }
+  .green-border {
+    border: 1px solid green;
+  }
   .red-text {
     color: red;
   }
   
   .green-text {
-    color: red;
+    color: green;
   }
 
 table {
