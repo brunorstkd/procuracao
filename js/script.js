@@ -44,7 +44,7 @@ multaButton2.addEventListener("click", function() {
 
 function cloneButtons() {
   // Clone Ilsa button
-  const gestores_ilsa = ["Marcelo","Ismael", "Juliano"];
+  const gestores_ilsa = [];
   const ilsaButton = document.getElementById("ilsa");
   const divBotao = document.getElementById("div_botao");
 
@@ -67,7 +67,7 @@ function cloneButtons() {
 
   
   // Clone Alexandro button
-  const gestores_alexandro = ["Alan","Rodolfo","Eduardo","Anderson"];
+  const gestores_alexandro = ["Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"];
   const alexandroButton = document.getElementById("alexandro");
 
   alexandroButton.addEventListener("click", function() {
@@ -86,7 +86,7 @@ function cloneButtons() {
   }
 
   // Clone Fran button
-  const gestores_fran = ["Wellington","Rafael"];
+  const gestores_fran = ["Rodolfo","Yuria"];
   const franButton = document.getElementById("fran");
 
   franButton.addEventListener("click", function() {
@@ -115,7 +115,7 @@ function cloneButtons() {
   // Clone Jefferson button
 
   const jeffersonButton = document.getElementById("jefferson");
-  const gestores_jefferson = ["Francisco","Gelison"];
+  const gestores_jefferson = ["Francisco","Lucas Belmonte", "Gelisson"];
 
   jeffersonButton.addEventListener("click", function() {
     window.open(urlJefferson);
