@@ -151,6 +151,11 @@ li{
 button{
     margin: 5px;
 }
+
+.btn2{
+    background-color: rgb(226, 43, 226);
+}
+
 body {
     margin: 0;
     padding: 0;

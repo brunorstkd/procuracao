@@ -12,6 +12,9 @@ const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
 
+const ilsa2Button = document.getElementById("ilsa2");
+
+
 function paulawhatsapp(){
   window.open(urlPaulaWhatsapp);
 };
@@ -23,6 +26,9 @@ function recrutamentowhatsapp(){
 
 paulaButton.addEventListener("click",function() {
   window.open(urlPaula);});
+
+ilsa2Button.addEventListener("click",function() {
+  window.open(urlIlsa);});
 
 multaButton.addEventListener("click", function() {
   document.getElementById('multabox').style.display = 'flex';
