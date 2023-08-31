@@ -6,12 +6,13 @@ const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
 const urlPaulaWhatsapp = "https://wa.me/5519991184772";
+const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
 
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
-
+const spButton = document.getElementById("sp");
 const ilsa2Button = document.getElementById("ilsa2");
 
 
@@ -26,6 +27,9 @@ function recrutamentowhatsapp(){
 
 paulaButton.addEventListener("click",function() {
   window.open(urlPaula);});
+
+spButton.addEventListener("click",function() {
+  window.open(urlsp);});
 
 ilsa2Button.addEventListener("click",function() {
   window.open(urlIlsa);});
