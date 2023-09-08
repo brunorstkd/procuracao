@@ -3,10 +3,19 @@ const urlIlsa = "https://forms.gle/NC7HxjiFKeNRfVdE7";
 const urlAlexandro = "https://forms.gle/46Vs5KMHPBuRiVFB9";
 const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
 const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
-const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
-const urlPaulaWhatsapp = "https://wa.me/5519991184772";
 const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
+
+const urlcurriculo = "https://wa.me/5551992684379";
+const urlPaulaWhatsapp = "https://wa.me/5519991184772";
+
+
+
+const gestores_alexandro = ["Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"];
+const gestores_fran = ["Rodolfo","Yuria"];
+const gestores_jefferson = ["Francisco","Lucas Belmonte", "Gelisson"];
+const gestores_ilsa = [];
+
 
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
@@ -54,7 +63,7 @@ multaButton2.addEventListener("click", function() {
 
 function cloneButtons() {
   // Clone Ilsa button
-  const gestores_ilsa = [];
+  
   const ilsaButton = document.getElementById("ilsa");
   const divBotao = document.getElementById("div_botao");
 
@@ -77,7 +86,7 @@ function cloneButtons() {
 
   
   // Clone Alexandro button
-  const gestores_alexandro = ["Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"];
+
   const alexandroButton = document.getElementById("alexandro");
 
   alexandroButton.addEventListener("click", function() {
@@ -96,7 +105,7 @@ function cloneButtons() {
   }
 
   // Clone Fran button
-  const gestores_fran = ["Rodolfo","Yuria"];
+
   const franButton = document.getElementById("fran");
 
   franButton.addEventListener("click", function() {
@@ -125,7 +134,7 @@ function cloneButtons() {
   // Clone Jefferson button
 
   const jeffersonButton = document.getElementById("jefferson");
-  const gestores_jefferson = ["Francisco","Lucas Belmonte", "Gelisson"];
+
 
   jeffersonButton.addEventListener("click", function() {
     window.open(urlJefferson);
@@ -146,7 +155,6 @@ function cloneButtons() {
 cloneButtons();
 
 const jeffersonButton2 = document.getElementById("jefferson2");
-const gestores_jefferson = ["Francisco","Gelison"];
 
   jeffersonButton2.addEventListener("click", function() {
     window.open(urlJefferson);
@@ -175,4 +183,3 @@ curriculoButton.addEventListener("click", function() {
   document.getElementById('curriculobox').style.display = 'block';
   document.getElementById('outrosbox').style.display = 'none';
 });
-
