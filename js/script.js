@@ -1,6 +1,6 @@
 
 const urlIlsa = "https://forms.gle/NC7HxjiFKeNRfVdE7";
-const urlAlexandro = "https://forms.gle/46Vs5KMHPBuRiVFB9";
+const urlYasmim = "https://forms.gle/46Vs5KMHPBuRiVFB9";
 const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
 const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
@@ -14,8 +14,8 @@ const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
 const multaButton2 = document.getElementById("multa2");
 const spButton = document.getElementById("sp");
-const ilsa2Button = document.getElementById("ilsa2");
-
+const marioButton = document.getElementById("mario");
+const urlMario = 'https://forms.gle/ixG1srBmK1ZibMur7';
 
 
 function paulawhatsapp(){
@@ -64,8 +64,8 @@ paulaButton.addEventListener("click",function() {
 spButton.addEventListener("click",function() {
   window.open(urlsp);});
 
-ilsa2Button.addEventListener("click",function() {
-  window.open(urlIlsa);});
+marioButton.addEventListener("click",function() {
+  window.open(urlMario);});
 
 // Abrir multa, ocultar resto
 multaButton.addEventListener("click", function() {
@@ -103,14 +103,14 @@ function criarNovosBotoes(botaoModelo, gestores, atendente) {
 }
 
 // Exemplo de uso:
-const alessandro = {atendente: urlAlexandro, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"]};
+const alessandro = {atendente: urlYasmim, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"]};
 const jeferson = {atendente: urlJefferson, gestores: ["Thaynara","Francisco","Lucas Belmonte", "Gelisson"]};
 const fran = {atendente: urlFran, gestores: ["Rodolfo","Yuria","Wellington"]};
 const ilsa = {atendente: urlIlsa, gestores: []};
 
 
 const ilsaButton = document.getElementById("ilsa");
-criarNovosBotoes(ilsaButton, alessandro.gestores, urlAlexandro);
+criarNovosBotoes(ilsaButton, alessandro.gestores, urlYasmim);
 criarNovosBotoes(ilsaButton, jeferson.gestores, urlJefferson);
 criarNovosBotoes(ilsaButton, fran.gestores, urlFran);
 criarNovosBotoes(ilsaButton, ilsa.gestores, urlIlsa);
