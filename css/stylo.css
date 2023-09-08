@@ -245,7 +245,7 @@ form{
 
 .comprovantebox{
     padding: 10px;
-    background-color: rgba(235, 235, 235, 0.692);
+    background-color: rgba(196, 13, 13, 0.692);
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -260,13 +260,21 @@ form{
     }    
     .comprovantebox{
         padding: 10px;
-        background-color: rgba(204, 228, 240, 0.692);
+        background-color: rgba(7, 162, 240, 0.692);
         display: flex;
         flex-direction: column;
         border-radius: 10px;
         max-width: 600px;
         justify-content: space-evenly;
         align-items: center;
+    }
+    .caixarh{
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border-radius: 10px;
     }
 
     .agendamentobox2{
@@ -301,6 +309,7 @@ form{
     
     button{
         margin: 5px;
+        font-size: smaller;
     }
     
     .caixa{
@@ -351,6 +360,26 @@ form{
   .green-text {
     color: green;
   }
+
+  .rhbtn{
+    width: 40vw;
+    font-size: medium;
+    padding: 3px;
+}
+.voltarbtn{
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+  
+}
+
+button{
+    margin: 5px;
+}
+
+.btn2{
+    background-color: rgb(226, 43, 226);
+}
 
     
   }
