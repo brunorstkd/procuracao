@@ -9,14 +9,6 @@ const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaulaWhatsapp = "https://wa.me/5519991184772";
 
-
-
-const gestores_alexandro = ["Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"];
-const gestores_fran = ["Rodolfo","Yuria"];
-const gestores_jefferson = ["Francisco","Lucas Belmonte", "Gelisson"];
-const gestores_ilsa = [];
-
-
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
 const curriculoButton = document.getElementById("curriculo");
@@ -25,134 +17,15 @@ const spButton = document.getElementById("sp");
 const ilsa2Button = document.getElementById("ilsa2");
 
 
+
 function paulawhatsapp(){
   window.open(urlPaulaWhatsapp);
 };
-
 
 function recrutamentowhatsapp(){
   window.open(urlcurriculo);
 };
 
-paulaButton.addEventListener("click",function() {
-  window.open(urlPaula);});
-
-spButton.addEventListener("click",function() {
-  window.open(urlsp);});
-
-ilsa2Button.addEventListener("click",function() {
-  window.open(urlIlsa);});
-
-multaButton.addEventListener("click", function() {
-  document.getElementById('multabox').style.display = 'flex';
-  document.getElementById('outrosbox').style.display = 'none';
-});
-
-
-multaButton2.addEventListener("click", function() {
-  const urlpt1 = "https://wa.me/5551992362534?text="
-  const urlpt2 = "Meu nome é: " + document.getElementById('nomemotorista').value;
-  const urlpt3 = "%0AMinha placa é: " + document.getElementById('placa').value;
-  const urlpt4 = "%0APeriodo da multa: " + document.getElementById('periodo').value;
-  const urlMulta = urlpt1+urlpt2+urlpt3+urlpt4;
-  console.log(urlMulta)
-  window.open(urlMulta);
-});
-
-
-
-function cloneButtons() {
-  // Clone Ilsa button
-  
-  const ilsaButton = document.getElementById("ilsa");
-  const divBotao = document.getElementById("div_botao");
-
-  ilsaButton.addEventListener("click", function() {
-    window.open(urlIlsa);
-  });
-
-  for (let i = 0; i < gestores_ilsa.length; i++) {
-    const newButton = ilsaButton.cloneNode(true);
-    newButton.id = gestores_ilsa[i].toLowerCase();
-    newButton.textContent = gestores_ilsa[i];
-    divBotao.appendChild(newButton);
-
-
-    newButton.addEventListener("click", function() {
-      window.open(urlIlsa);
-    });
-  }
-
-
-  
-  // Clone Alexandro button
-
-  const alexandroButton = document.getElementById("alexandro");
-
-  alexandroButton.addEventListener("click", function() {
-    window.open(urlAlexandro);
-  });
-  for (let i = 0; i < gestores_alexandro.length; i++) {
-    const newButton = alexandroButton.cloneNode(true);
-    newButton.id = gestores_alexandro[i].toLowerCase();
-    newButton.textContent = gestores_alexandro[i];
-    divBotao.appendChild(newButton);
-
-
-    newButton.addEventListener("click", function() {
-      window.open(urlAlexandro);
-    });
-  }
-
-  // Clone Fran button
-
-  const franButton = document.getElementById("fran");
-
-  franButton.addEventListener("click", function() {
-    window.open(urlFran);
-  });
-  for (let i = 0; i < gestores_fran.length; i++) {
-    const newButton = franButton.cloneNode(true);
-    newButton.id = gestores_fran[i].toLowerCase();
-    newButton.textContent = gestores_fran[i];
-    divBotao.appendChild(newButton);
-
-  
-    newButton.addEventListener("click", function() {
-      window.open(urlFran);
-    });
-  }
-
-  const franButton2 = document.getElementById("fran2");
-
-  franButton2.addEventListener("click", function() {
-    window.open(urlFran);
-  });
-
-  
-
-  // Clone Jefferson button
-
-  const jeffersonButton = document.getElementById("jefferson");
-
-
-  jeffersonButton.addEventListener("click", function() {
-    window.open(urlJefferson);
-  });
-  
-  for (let i = 0; i < gestores_jefferson.length; i++) {
-    const newButton = jeffersonButton.cloneNode(true);
-    newButton.id = gestores_jefferson[i].toLowerCase();
-    newButton.textContent = gestores_jefferson[i];
-    divBotao.appendChild(newButton);
-
- 
-    newButton.addEventListener("click", function() {
-      window.open(urlJefferson);
-    });
-  }
-}
-cloneButtons();
 
 const jeffersonButton2 = document.getElementById("jefferson2");
 
@@ -183,3 +56,62 @@ curriculoButton.addEventListener("click", function() {
   document.getElementById('curriculobox').style.display = 'block';
   document.getElementById('outrosbox').style.display = 'none';
 });
+
+
+paulaButton.addEventListener("click",function() {
+  window.open(urlPaula);});
+
+spButton.addEventListener("click",function() {
+  window.open(urlsp);});
+
+ilsa2Button.addEventListener("click",function() {
+  window.open(urlIlsa);});
+
+// Abrir multa, ocultar resto
+multaButton.addEventListener("click", function() {
+  document.getElementById('multabox').style.display = 'flex';
+  document.getElementById('outrosbox').style.display = 'none';
+});
+
+
+// Envio multa Samanta
+multaButton2.addEventListener("click", function() {
+  const urlpt1 = "https://wa.me/5551992362534?text="
+  const urlpt2 = "Meu nome é: " + document.getElementById('nomemotorista').value;
+  const urlpt3 = "%0AMinha placa é: " + document.getElementById('placa').value;
+  const urlpt4 = "%0APeriodo da multa: " + document.getElementById('periodo').value;
+  const urlMulta = urlpt1+urlpt2+urlpt3+urlpt4;
+  console.log(urlMulta)
+  window.open(urlMulta);
+});
+
+
+function criarNovosBotoes(botaoModelo, gestores, atendente) {
+  const divBotao = document.getElementById("div_botao");
+  
+  for (let i = 0; i < gestores.length; i++) {
+    const newButton = botaoModelo.cloneNode(true);
+    newButton.id = gestores[i].toLowerCase();
+    newButton.textContent = gestores[i];
+    divBotao.appendChild(newButton);
+
+    newButton.addEventListener("click", function() {
+      // Lógica a ser executada quando um botão é clicado
+      window.open(atendente);
+    });
+  }
+}
+
+// Exemplo de uso:
+const alessandro = {atendente: urlAlexandro, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"]};
+const jeferson = {atendente: urlJefferson, gestores: ["Thaynara","Francisco","Lucas Belmonte", "Gelisson"]};
+const fran = {atendente: urlFran, gestores: ["Rodolfo","Yuria","Wellington"]};
+const ilsa = {atendente: urlIlsa, gestores: []};
+
+
+const ilsaButton = document.getElementById("ilsa");
+criarNovosBotoes(ilsaButton, alessandro.gestores, urlAlexandro);
+criarNovosBotoes(ilsaButton, jeferson.gestores, urlJefferson);
+criarNovosBotoes(ilsaButton, fran.gestores, urlFran);
+criarNovosBotoes(ilsaButton, ilsa.gestores, urlIlsa);
+
