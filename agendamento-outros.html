@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
   
-<title>Agendamento GOL - RH 2.0</title>
+<title>Agendamento Outros veículos - RH 2.0</title>
 
 </head>
 <body>
@@ -19,13 +19,18 @@
       <img class="stnd default-logo dark-version" alt="REITER LOG" src="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png" srcset="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 1x, https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 2x"> 
     </a>  
   </div>
-
-  <h1> Canal de Atendimento - RH</h1>
-  <h2>Agendamentos - GOL</h2>
+  <h1>AMBIENTE DE TESTE</h1>
+  <h1>OUTROS VEÍCULOS</h1>
 </header>
 <main class="o-main">
 <div class="text-center">
 		<div class="agendamentobox2 container" id='agendamentobox2'>
+       <div class="grupo">
+      <label>PLACA:</label>
+			<input type="text" id="placaInput">
+      <p id='comentario' class='comentario'>Digita a placa ou escolha uma das abaixo:</p>
+      <div id='placas'></div>
+      </div>
 			<div class="grupo">
       <label>Data Saída:</label>
 			<input type="date" id="data-saida">
@@ -49,12 +54,16 @@
 			<button id="iniciar" class="btn btn-danger btn-lg" onclick="incluirAgendamento()">Agendar</button>
 		</div>
 		<div class="agendamentos container">
+    <button id='novoagendamento' hidden onclick="location.reload()">Realizar Novo Agendamento</button>
+
 			<h2>Agendamentos</h2>
       <p>Para cancelar agendamentos ou informar erros, entrar em contato com Jurídico</p>
       <div id='tabela-agendamento' class='tabelamae text-center'></div>
 
   </div>
 	<script>
+
+  let placa = "";
 
   async function fetchAndRenderTableData() {
   const spreadsheetID = '1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA';
@@ -105,23 +114,77 @@
   // Cria o corpo da tabela
   const tbody = document.createElement('tbody');
   structuredData.forEach(data => {
-    const row = document.createElement('tr');
-    headers.slice(0, 5).forEach(header => {
-      const cell = document.createElement('td');
-      cell.textContent = data[header] || '';
-      row.appendChild(cell);
-    });
-    tbody.appendChild(row);
+    // Verifica se a quinta coluna (índice 4) contém "Gabriel"
+    if (data[headers[5]] === placa) {
+      const row = document.createElement('tr');
+      headers.slice(0, 5).forEach(header => {
+        const cell = document.createElement('td');
+        cell.textContent = data[header] || '';
+        row.appendChild(cell);
+      });
+      tbody.appendChild(row);
+    }
   });
   table.appendChild(tbody);
 
   const tabelaAgendamento = document.getElementById('tabela-agendamento');
   tabelaAgendamento.innerHTML = '';
   tabelaAgendamento.appendChild(table);
+
+  
+  // Crie um conjunto para armazenar valores únicos da quinta coluna
+const valoresUnicos = new Set();
+
+structuredData.forEach(data => {
+  // Obtém o valor da quinta coluna
+  const valorQuintaColuna = data[headers[5]];
+  
+  // Verifica se o valor não é undefined e adiciona ao conjunto
+  if (valorQuintaColuna !== undefined) {
+    valoresUnicos.add(valorQuintaColuna);
+  }
+});
+
+// Agora 'valoresUnicos' contém todos os valores únicos da quinta coluna
+
+// Para converter o conjunto em um array (opcional)
+const valoresUnicosArray = Array.from(valoresUnicos);
+console.log(valoresUnicosArray);
+
+//teste
+// Obtém a referência para a div 'placas'
+const divPlacas = document.getElementById('placas');
+const placaInput = document.getElementById('placaInput');
+
+// Limpa o conteúdo atual da div
+divPlacas.innerHTML = '';
+
+// Cria botões com base nos valores únicos do array
+valoresUnicosArray.forEach(valor => {
+  const botao = document.createElement('button');
+  botao.textContent = valor;
+
+  // Adicione um event listener para cada botão
+  botao.addEventListener('click', () => {
+    // Quando o botão é clicado, atualize o valor do input 'placa' com o valor do nome do botão
+    placaInput.value = valor;
+    placa = valor;
+
+    // Chame a função para renderizar a tabela novamente
+    fetchAndRenderTableData();
+  });
+
+  // Adicione o botão à div 'placas'
+  divPlacas.appendChild(botao);
+});
+
+
+//fim teste
 }
 
+
 window.addEventListener('DOMContentLoaded', fetchAndRenderTableData);
-setInterval(fetchAndRenderTableData, 3000);
+setInterval(fetchAndRenderTableData, 1000);
 
 
 function formatDate(dateString) {
@@ -155,6 +218,7 @@ function formatTime(timeString) {
 			const horarioRetorno = document.getElementById('horario-retorno').value;
 			const destino = document.getElementById('destino').value;
       const motorista = document.getElementById('motorista').value;
+
 
       const tabela = document.getElementById('tabela-agendamento');
       const linhas = tabela.getElementsByTagName('tr');
@@ -215,13 +279,21 @@ function formatTime(timeString) {
       divAgendamentoBox2.innerHTML = ''; // Limpa o conteúdo atual da div
       const h1Element = document.createElement('h1');
       h1Element.textContent = 'Agendamento realizado com sucesso';
+      // Obtém a referência para o botão 'novoagendamento'
+const novoAgendamentoButton = document.getElementById('novoagendamento');
+
+// Remova o atributo 'hidden' para mostrar o botão
+novoAgendamentoButton.removeAttribute('hidden');
+
+
+
 
       divAgendamentoBox2.appendChild(h1Element);
 			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
 			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
             console.log("click no botão incluir");
             event.preventDefault();
-            const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista;
+            const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista + "&placa=" + placa;
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", url, false);
             xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
@@ -229,15 +301,6 @@ function formatTime(timeString) {
             console.log(url)
                   
 			var delayInMilliseconds = 10000; //1 second
-
-			setTimeout(function() {
-			//your code to be executed after 1 second
-      location.reload();
-			}, delayInMilliseconds);
-      document.getElementById('iframe').contentDocument.location.reload(true);
-
-
-    
 		
 		};
     // Verificar se a data e o horário já existem na tabela
@@ -260,6 +323,93 @@ function formatTime(timeString) {
         console.log("Valor da célula de horário de retorno:", horarioRetornoCelula);
         console.log("Valor da variável horarioRetorno:", horarioRetorno);
       }
+
+function pintarInputsRepetidos() {
+  const dataSaida = document.getElementById('data-saida').value;
+  const horarioSaida = document.getElementById('horario-saida').value;
+  const horarioRetorno = document.getElementById('horario-retorno').value;
+
+  const tabela = document.getElementById('tabela-agendamento');
+  const linhas = tabela.getElementsByTagName('tr');
+  console.log('baixo o formato');
+
+  for (let i = 1; i < linhas.length; i++) {
+    const celulas = linhas[i].getElementsByTagName('td');
+    const dataCelula = moment(celulas[0].textContent, 'DD/MM/YYYY').format('YYYY-MM-DD');
+    const horarioSaidaCelula = celulas[1].textContent;
+    const horarioRetornoCelula = celulas[2].textContent;
+
+    if (dataCelula === dataSaida) {
+      console.log("Há datas iguais");
+      if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+        const h1Element = document.createElement('h1');
+        // Pintar os inputs de vermelho
+        document.getElementById('data-saida').classList.add('red-border');
+        document.getElementById('horario-saida').classList.add('red-border');
+        document.getElementById('horario-retorno').classList.add('red-border');
+
+        return;
+      }
+
+      if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+
+
+        // Pintar os inputs de vermelho
+        document.getElementById('horario-saida').classList.add('red-border');
+
+        return;
+      }
+
+      if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+        const h1Element = document.createElement('h1');
+
+        // Pintar os inputs de vermelho
+        document.getElementById('horario-retorno').classList.add('red-border');
+
+        return;
+      }
+    }
+  }
+  document.getElementById('data-saida').classList.replace('red-border', 'green-border');
+  document.getElementById('horario-saida').classList.replace('red-border', 'green-border');
+  document.getElementById('horario-retorno').classList.replace('red-border', 'green-border');
+
+
+
+}
+console.log('teste');
+
+
+document.getElementById('data-saida').addEventListener('keyup', pintarInputsRepetidos);
+document.getElementById('horario-saida').addEventListener('keyup', pintarInputsRepetidos);
+document.getElementById('horario-retorno').addEventListener('keyup', pintarInputsRepetidos);
+const placaInput = document.getElementById('placaInput');
+const atualizarPlacaButton = document.getElementById('atualizarPlaca');
+
+// Event listener para o input quando o foco sai
+placaInput.addEventListener('blur', () => {
+  const novoValorPlaca = placaInput.value.toUpperCase();
+
+  placa = novoValorPlaca;
+
+  // Chame a função para renderizar a tabela novamente
+  fetchAndRenderTableData();
+});
+
+// Event listener para o botão
+atualizarPlacaButton.addEventListener('click', () => {
+  // Observe que o código do botão pode ser mantido para acionar o evento manualmente, se necessário
+  const novoValorPlaca = placaInput.value;
+
+  placa = novoValorPlaca;
+
+  // Chame a função para renderizar a tabela novamente
+  fetchAndRenderTableData();
+});
+
 
     
 	</script>
