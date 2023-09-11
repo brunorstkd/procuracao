@@ -163,6 +163,8 @@ divPlacas.innerHTML = '';
 valoresUnicosArray.forEach(valor => {
   const botao = document.createElement('button');
   botao.textContent = valor;
+  botao.classList.add('botaozinho');
+
 
   // Adicione um event listener para cada botão
   botao.addEventListener('click', () => {
