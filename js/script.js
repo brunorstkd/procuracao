@@ -16,6 +16,7 @@ const multaButton2 = document.getElementById("multa2");
 const spButton = document.getElementById("sp");
 const marioButton = document.getElementById("mario");
 const urlMario = 'https://forms.gle/ixG1srBmK1ZibMur7';
+const Fran2Button = document.getElementById("fran2");
 
 
 function paulawhatsapp(){
@@ -32,7 +33,14 @@ const jeffersonButton2 = document.getElementById("jefferson2");
   jeffersonButton2.addEventListener("click", function() {
     window.open(urlJefferson);
   });
+
+
+  Fran2Button.addEventListener("click", function() {
+    window.open(urlFran);
+  });
   
+  
+
 
 
 const rhButton = document.getElementById('rh');
@@ -103,15 +111,19 @@ function criarNovosBotoes(botaoModelo, gestores, atendente) {
 }
 
 // Exemplo de uso:
-const alessandro = {atendente: urlYasmim, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson"]};
+const alessandro = {atendente: urlYasmim, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Leonardo", "Marcelo", "Gustavo", "Eduardo", "Anderson", "Alessandro"]};
 const jeferson = {atendente: urlJefferson, gestores: ["Thaynara","Francisco","Lucas Belmonte", "Gelisson"]};
 const fran = {atendente: urlFran, gestores: ["Rodolfo","Yuria","Wellington"]};
 const ilsa = {atendente: urlIlsa, gestores: []};
+const mario = {atendente: urlMario, gestores: ["Maikon - Dist. Elétricos", "Maikon - Dist. Seca"]};
 
 
 const ilsaButton = document.getElementById("ilsa");
+criarNovosBotoes(ilsaButton, mario.gestores, urlMario);
 criarNovosBotoes(ilsaButton, alessandro.gestores, urlYasmim);
 criarNovosBotoes(ilsaButton, jeferson.gestores, urlJefferson);
 criarNovosBotoes(ilsaButton, fran.gestores, urlFran);
 criarNovosBotoes(ilsaButton, ilsa.gestores, urlIlsa);
 
+
+ilsaButton.setAttribute('hidden', 'true');
