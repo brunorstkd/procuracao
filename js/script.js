@@ -7,7 +7,7 @@ const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
 const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
 
 const urlcurriculo = "https://wa.me/5551992684379";
-const urlPaulaWhatsapp = "https://wa.me/5519991184772";
+const urlPaulaWhatsapp = "https://wa.me/5551993611444";
 
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
