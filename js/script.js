@@ -111,11 +111,11 @@ function criarNovosBotoes(botaoModelo, gestores, atendente) {
 }
 
 // Exemplo de uso:
-const alessandro = {atendente: urlYasmim, gestores: ["Ismael - Elétrico","Ismael - Dist. Refrig.", "Cabral", "Marcelo", "Gustavo", "Eduardo", "Anderson", "Alessandro"]};
-const jeferson = {atendente: urlJefferson, gestores: ["Thaynara","Francisco","Lucas Belmonte", "Gelisson"]};
-const fran = {atendente: urlFran, gestores: ["Rodolfo","Yuria","Wellington"]};
-const ilsa = {atendente: urlIlsa, gestores: []};
-const mario = {atendente: urlMario, gestores: ["Maikon - Dist. Elétricos", "Maikon - Dist. Seca"]};
+const alessandro = {atendente: urlYasmim, gestores: ["Alessandro", "Anderson", "Eduardo", "Gustavo", "Marcelo"]};
+const jeferson = {atendente: urlJefferson, gestores: ["Gelison Torres", "Lucas Belmonte", "Thaynara Romano"]};
+const fran = {atendente: urlFran, gestores: ["Yuria","Wellington"]};
+const ilsa = {atendente: urlIlsa, gestores: ["Ismael", "Cabral", "Maikon", "Rodolfo"]};
+const mario = {atendente: urlMario, gestores: []};
 
 
 const ilsaButton = document.getElementById("ilsa");
