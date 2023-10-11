@@ -1,3 +1,19 @@
+body {
+    text-align: center; /* Centraliza o conteúdo na horizontal */
+}
+
+#excelFile {
+    margin: 10px 0; /* Espaçamento entre o input e outros elementos */
+}
+
+#downloadButton {
+    margin: 10px 0; /* Espaçamento entre o botão e outros elementos */
+}
+
+#resultTable {
+    margin: 0 auto; /* Centraliza a tabela horizontalmente */
+}
+
 .caixa{
     padding: 10px;
     background-color: rgb(241, 241, 241);
