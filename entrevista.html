@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/stylo.css" />
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.4/xlsx.full.min.js"></script>
+
+  
+<title>Entrevista de Desligamento</title>
+
+</head>
+<body>
+<header class="o-header container-fluid text-center">
+  <div class="col span_3">
+    <a id="logo" href="https://online-rs.github.io/reiter-rh/" data-supplied-ml-starting-dark="false" data-supplied-ml-starting="false" data-supplied-ml="false">
+      <img class="stnd default-logo dark-version" alt="REITER LOG" src="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png" srcset="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 1x, https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 2x"> 
+    </a>  
+  </div>
+
+  <h1> Canal de Atendimento - RH</h1>
+</header>
+<main class="o-main">
+<h2> Respostas - Entrevistas de Desligamento</h2>
+  <table id="table" class="table2">
+    </table>
+    <script>
+        async function fetchAndRenderTableData() {
+            const spreadsheetID = '18A7FCvOq4QTx7N4tz5iHkLyEmFeJhL6-sqNTuWLJxDY';
+            const url = `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json`;
+
+            const response = await fetch(url);
+            const text = await response.text();
+            const jsonData = JSON.parse(text.substr(47).slice(0, -2));
+
+            const rows = jsonData.table.rows;
+            const headers = jsonData.table.cols.map(col => col.label);
+
+            // Especifique as colunas desejadas
+            const desiredColumns = ["Carimbo de data/hora", "Nome Completo", "Gestor"];
+
+            // Obtenha os índices das colunas desejadas
+            const columnIndices = [];
+            headers.forEach((header, index) => {
+                if (desiredColumns.includes(header)) {
+                    columnIndices.push(index);
+                }
+            });
+
+            const table = document.getElementById("table");
+
+            // Cria a linha de cabeçalho da tabela com as colunas desejadas
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+            columnIndices.forEach(index => {
+                const th = document.createElement("th");
+                th.textContent = headers[index];
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Preenche os dados da tabela com as 10 últimas linhas
+            const tbody = document.createElement("tbody");
+            const last10Rows = rows.slice(-10);
+            last10Rows.forEach(rowData => {
+                const row = document.createElement("tr");
+                columnIndices.forEach((index, columnIndex) => {
+                    if (Array.isArray(rowData.c) && rowData.c[index]) {
+                        const cell = document.createElement("td");
+                        const cellData = rowData.c[index].v;
+                        if (columnIndex === 0) {
+                            // Se for a primeira coluna (data e hora), a formatação precisa ser tratada
+                            cell.textContent = formatDateTime(cellData);
+                        } else {
+                            cell.textContent = cellData;
+                        }
+                        row.appendChild(cell);
+                    }
+                });
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+        }
+
+        function formatDateTime(dateTimeString) {
+            // Analise o formato específico "Date(2023,9,11,15,20,44)" e crie uma data
+            const match = dateTimeString.match(/Date\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)/);
+            if (match) {
+                const [, year, month, day, hours, minutes, seconds] = match;
+                const date = new Date(year, parseInt(month) - 1, day, hours, minutes, seconds);
+                // Formate a data e hora como "11/10/2023 15:20:44"
+                const formattedDate = `${padZero(day)}/${padZero(parseInt(month) + 1)}/${year} ${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+                return formattedDate;
+            } else {
+                return "Data inválida";
+            }
+        }
+
+        function padZero(value) {
+            return value < 10 ? `0${value}` : value;
+        }
+
+        fetchAndRenderTableData();
+    </script>
+
+</main>
+<footer class="o-footer text-center">
+  <p>Desenvolvido por @Bruno de Oliveira 2023.</p>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -14,6 +14,13 @@ body {
     margin: 0 auto; /* Centraliza a tabela horizontalmente */
 }
 
+.table2{
+    margin: 0 auto; /* Centralizar horizontalmente */
+    width: 50%; /* Defina a largura desejada */
+    margin-top: 30px;
+    
+}
+
 .caixa{
     padding: 10px;
     background-color: rgb(241, 241, 241);
@@ -308,6 +315,13 @@ form{
         flex-wrap: wrap;
         justify-content: space-around;
         border-radius: 10px;
+    }
+
+    .table2{
+        margin: 0 auto; /* Centralizar horizontalmente */
+        width: 95%; /* Defina a largura desejada */
+        margin-top: 30px;
+        
     }
 
     .agendamentobox2{
