@@ -31,6 +31,7 @@
     <table id="resultTable" border="1">
         <thead>
             <tr>
+                <th>Original</th>
                 <th>Data e Hora</th>
                 <th>Código</th>
                 <th>Matrícula</th>
@@ -58,20 +59,24 @@
                     tbody.innerHTML = '';
 
                     jsonData.forEach(function (row) {
+                        var hrMobilidade = row["HR-MOBILIDADE"];
                         var dataHora = row["HR-MOBILIDADE"].slice(9, 21);
                         var codigoMatch = row["HR-MOBILIDADE"].match(/-(\d+)-/);
                         var codigo = codigoMatch ? codigoMatch[1] : '';
                         var matricula = row["HR-MOBILIDADE"].split('-').pop();
                         
                         var newRow = document.createElement("tr");
+                        var hrMobilidadeCell = document.createElement("td");
                         var dataHoraCell = document.createElement("td");
                         var codigoCell = document.createElement("td");
                         var matriculaCell = document.createElement("td");
                         
+                        hrMobilidadeCell.textContent = hrMobilidade;
                         dataHoraCell.textContent = dataHora;
                         codigoCell.textContent = codigo;
                         matriculaCell.textContent = matricula;
                         
+                        newRow.appendChild(hrMobilidadeCell);
                         newRow.appendChild(dataHoraCell);
                         newRow.appendChild(codigoCell);
                         newRow.appendChild(matriculaCell);
