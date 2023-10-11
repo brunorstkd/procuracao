@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/stylo.css" />
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+  
+  <title>Agendamento GOL - RH 2.0</title>
+
+</head>
+<body>
+<header class="o-header container-fluid text-center">
+  <div class="col span_3">
+    <a id="logo" href="https://online-rs.github.io/reiter-rh/" data-supplied-ml-starting-dark="false" data-supplied-ml-starting="false" data-supplied-ml="false">
+      <img class="stnd default-logo dark-version" alt="REITER LOG" src="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png" srcset="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 1x, https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 2x"> 
+    </a>  
+  </div>
+  <h1>Agendamentos - GOL (JURÍDICO)</h1>
+  <h2>Placa: IZD7A44</h2>
+</header>
+<main class="o-main">
+<div class="text-center">
+		<div class="agendamentobox2 container" id='agendamentobox2'>
+       <div class="grupo">
+      <label>PLACA:</label>
+			<input type="text" id="placaInput" value='IZD7A44'>
+      <p id='comentario' class='comentario'>Digita a placa ou escolha uma das abaixo:</p>
+      <div id='placas'></div>
+      </div>
+			<div class="grupo">
+      <label>Data Saída:</label>
+			<input type="date" id="data-saida">
+      </div>
+      <div class="grupo"> 
+			<label>Horário de Saída:</label>
+			<input type="time" id="horario-saida">
+      </div>
+      <div class="grupo">
+			<label>Previsão Horário Retorno:</label>
+			<input type="time" id="horario-retorno">
+      </div>
+      <div class="grupo">
+			<label>Destino:</label>
+			<input type="text" id="destino">
+      </div>
+      <div class="grupo">
+      <label>Motorista:</label>
+			<input type="text" id="motorista">
+      </div>
+      
+			<button id="iniciar" class="btn btn-danger btn-lg" onclick="incluirAgendamento()">Agendar</button>
+		</div>
+		<div class="agendamentos container">
+    <button id='novoagendamento' hidden onclick="location.reload()">Realizar Novo Agendamento</button>
+
+			<h2>Agendamentos</h2>
+      <p>Para cancelar agendamentos ou informar erros, entrar em contato com Jurídico</p>
+      <div id='tabela-agendamento' class='tabelamae text-center'></div>
+
+  </div>
+	<script>
+
+  let placa = "IZD7A44";
+
+  async function fetchAndRenderTableData() {
+  const spreadsheetID = '1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA';
+  const url = `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json`;
+
+  const response = await fetch(url);
+  const text = await response.text();
+  const jsonData = JSON.parse(text.substr(47).slice(0, -2));
+
+  const rows = jsonData.table.rows;
+  const headers = jsonData.table.cols.map(col => col.label);
+
+  const structuredData = rows.map(row => {
+    const rowData = {};
+    row.c.forEach((cell, index) => {
+      const header = headers[index];
+      let value = cell && cell.v;
+
+      // Formatar a data
+      if (header.includes('Data')) {
+        value = formatDate(value);
+      }
+
+      // Formatar o horário
+      if (header.includes('Horário')) {
+        value = formatTime(value);
+      }
+
+      rowData[header] = value;
+    });
+    return rowData;
+  });
+
+  const table = document.createElement('table');
+  table.classList.add('table', 'table-bordered');
+
+  // Cria o cabeçalho da tabela
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  headers.slice(0, 5).forEach(header => {
+    const th = document.createElement('th');
+    th.textContent = header;
+    headerRow.appendChild(th);
+  });
+
+  const actionHeader = document.createElement('th');
+  actionHeader.textContent = 'Ação';
+  headerRow.appendChild(actionHeader);
+  
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  // Cria o corpo da tabela
+  const tbody = document.createElement('tbody');
+  structuredData.forEach(data => {
+    // Verifica se a quinta coluna (índice 4) contém "Gabriel"
+    if (data[headers[5]] === placa) {
+      const row = document.createElement('tr');
+      headers.slice(0, 5).forEach(header => {
+        const cell = document.createElement('td');
+        cell.textContent = data[header] || '';
+        row.appendChild(cell);
+      });
+       // Adiciona o botão de exclusão na última coluna
+    const deleteButtonCell = document.createElement('td');
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Excluir';
+    deleteButton.addEventListener('click', () => {
+      // Use a função `window.confirm` para mostrar uma caixa de diálogo de confirmação
+      const shouldDelete = window.confirm('Tem certeza de que deseja excluir este registro?');
+    
+      if (shouldDelete) {
+        // Adicione a lógica de exclusão aqui, com base nos dados da linha
+        // Por exemplo, você pode usar o índice da linha ou algum identificador único
+        // para identificar o registro a ser excluído.
+        // Em seguida, você pode remover a linha da tabela.
+        const row = event.target.closest('tr'); // Encontre a linha pai do botão clicado
+        const rowIndex = row.rowIndex; // Obtenha o índice da linha na tabela
+        deleteRowInGoogleSheets(rowIndex); // Chame uma função para excluir a linha no Google Sheets
+        row.remove();
+      }
+    });
+    
+    deleteButtonCell.appendChild(deleteButton);
+    row.appendChild(deleteButtonCell)
+      tbody.appendChild(row);
+    }
+  });
+
+  function deleteRowInGoogleSheets(rowIndex) {
+    const spreadsheetID = '1CPk6UmZfTCGxPukUO7Pehj5CXuPrqFkQepL3uhRGTLA';
+    const sheetName = 'Página1'; // Substitua pelo nome da sua aba
+    const url = `https://script.google.com/macros/s/158HFYL6CTk_bZ1GZF-XaK73_U2tf5APOX254tQpQnj09E8JUIzPk-ird/exec?sheetID=${spreadsheetID}&sheetName=${sheetName}&rowIndex=${rowIndex}`;
+  
+    fetch(url)
+      .then(response => {
+        if (response.status === 200) {
+          // Linha excluída com sucesso
+          row.remove(); // Remova a linha da tabela no frontend
+        } else {
+          // Lidar com erros, se necessário
+        }
+      })
+      .catch(error => {
+        // Lidar com erros de rede
+      });
+  }
+  table.appendChild(tbody);
+
+  const tabelaAgendamento = document.getElementById('tabela-agendamento');
+  tabelaAgendamento.innerHTML = '';
+  tabelaAgendamento.appendChild(table);
+
+  
+  // Crie um conjunto para armazenar valores únicos da quinta coluna
+const valoresUnicos = new Set();
+
+structuredData.forEach(data => {
+  // Obtém o valor da quinta coluna
+  const valorQuintaColuna = data[headers[5]];
+  
+  // Verifica se o valor não é undefined e adiciona ao conjunto
+  if (valorQuintaColuna !== undefined) {
+    valoresUnicos.add(valorQuintaColuna);
+  }
+});
+
+// Agora 'valoresUnicos' contém todos os valores únicos da quinta coluna
+
+// Para converter o conjunto em um array (opcional)
+const valoresUnicosArray = Array.from(valoresUnicos);
+console.log(valoresUnicosArray);
+
+//teste
+// Obtém a referência para a div 'placas'
+const divPlacas = document.getElementById('placas');
+const placaInput = document.getElementById('placaInput');
+
+// Limpa o conteúdo atual da div
+divPlacas.innerHTML = '';
+
+// Cria botões com base nos valores únicos do array
+valoresUnicosArray.forEach(valor => {
+  const botao = document.createElement('button');
+  botao.textContent = valor;
+  botao.classList.add('botaozinho');
+
+
+  // Adicione um event listener para cada botão
+  botao.addEventListener('click', () => {
+    // Quando o botão é clicado, atualize o valor do input 'placa' com o valor do nome do botão
+    placaInput.value = valor;
+    placa = valor;
+
+    // Chame a função para renderizar a tabela novamente
+    fetchAndRenderTableData();
+  });
+
+  // Adicione o botão à div 'placas'
+  divPlacas.appendChild(botao);
+});
+
+
+//fim teste
+}
+
+
+window.addEventListener('DOMContentLoaded', fetchAndRenderTableData);
+setInterval(fetchAndRenderTableData, 1000);
+
+
+function formatDate(dateString) {
+  const regex = /Date\((\d+),(\d+),(\d+)\)/;
+  const matches = regex.exec(dateString);
+  if (matches) {
+    const year = Number(matches[1]);
+    const month = Number(matches[2]) + 1;
+    const day = Number(matches[3]);
+    return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year.toString()}`;
+  }
+  return '';
+}
+
+function formatTime(timeString) {
+  const regex = /Date\(1899,11,30,(\d+),(\d+),(\d+)\)/;
+  const matches = regex.exec(timeString);
+  if (matches) {
+    const hours = Number(matches[1]);
+    const minutes = Number(matches[2]);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+  return '';
+}
+
+		let agendamentos = [];
+
+		function incluirAgendamento() {
+			const dataSaida = document.getElementById('data-saida').value;
+			const horarioSaida = document.getElementById('horario-saida').value;
+			const horarioRetorno = document.getElementById('horario-retorno').value;
+			const destino = document.getElementById('destino').value;
+      const motorista = document.getElementById('motorista').value;
+
+
+      const tabela = document.getElementById('tabela-agendamento');
+      const linhas = tabela.getElementsByTagName('tr');
+      console.log('baixo o formato');
+      
+      for (let i = 1; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        const dataCelula = moment(celulas[0].textContent, 'DD/MM/YYYY').format('YYYY-MM-DD');
+        const horarioSaidaCelula = celulas[1].textContent;
+        const horarioRetornoCelula = celulas[2].textContent;
+
+        if (dataCelula === dataSaida) {
+          console.log("Há datas iguais");
+          if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
+            alert('Horário já agendado. Cuidado com agendamento em duplicidade.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Horário já agendado. Cuidado com agendamento em duplicidade.';
+            divAgendamentoBox2.appendChild(h1Element);
+            return;
+          }
+        
+          // Verificar se horarioSaida está agendado no intervalo entre horarioSaidaCelula e horarioRetornoCelula
+          if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+            alert('Esse horário de saída está agendado. Por favor, escolha outro horário.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Esse horário de saída está agendado. Por favor, escolha outro horário.';
+            divAgendamentoBox2.appendChild(h1Element);
+            return;
+          }
+
+          if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+            alert('Esse horário de retorno está agendado. Por favor, escolha outro horário.');
+            const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+            const h1Element = document.createElement('h1');
+            h1Element.classList.add('red-text');
+            h1Element.textContent = 'Esse horário de retorno está agendado. Por favor, escolha outro horário.';
+            divAgendamentoBox2.appendChild(h1Element);
+            return;
+          }
+        };
+
+
+      
+        console.log("Iteração do loop:", i);
+        console.log("Valor da célula de data:", dataCelula);
+        console.log("Valor da variável dataSaida:", dataSaida);
+        console.log("Valor da célula de horário de saída:", horarioSaidaCelula);
+        console.log("Valor da variável horarioSaida:", horarioSaida);
+        console.log("Valor da célula de horário de retorno:", horarioRetornoCelula);
+        console.log("Valor da variável horarioRetorno:", horarioRetorno);
+      }
+
+      const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+      divAgendamentoBox2.innerHTML = ''; // Limpa o conteúdo atual da div
+      const h1Element = document.createElement('h1');
+      h1Element.textContent = 'Agendamento realizado com sucesso';
+      // Obtém a referência para o botão 'novoagendamento'
+const novoAgendamentoButton = document.getElementById('novoagendamento');
+
+// Remova o atributo 'hidden' para mostrar o botão
+novoAgendamentoButton.removeAttribute('hidden');
+
+
+
+
+      divAgendamentoBox2.appendChild(h1Element);
+			agendamentos.push({dataSaida, horarioSaida, horarioRetorno, destino, motorista});
+			agendamentos.sort((a, b) => new Date(a.dataSaida) - new Date(b.dataSaida));
+            console.log("click no botão incluir");
+            event.preventDefault();
+            const url = "https://hook.us1.make.com/wc6bb39rpw3dxpau2gyqbcirgd5cqxes?data=" + dataSaida + "&saida=" + horarioSaida + "&retorno=" + horarioRetorno + "&destino=" + destino + "&motorista=" + motorista + "&placa=" + placa;
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, false);
+            xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+            console.log(xhttp.responseText);
+            console.log(url)
+                  
+			var delayInMilliseconds = 10000; //1 second
+		
+		};
+    // Verificar se a data e o horário já existem na tabela
+      console.log('Abaixo a tabela');
+      const tabela = document.getElementById('tabela-agendamento');
+      const linhas = tabela.getElementsByTagName('tr');
+      console.log('baixo o formato');
+      
+      for (let i = 1; i < linhas.length; i++) {
+        const celulas = linhas[i].getElementsByTagName('td');
+        const dataCelula = celulas[0].textContent;
+        const horarioSaidaCelula = celulas[1].textContent;
+        const horarioRetornoCelula = celulas[2].textContent;
+      
+        console.log("Iteração do loop:", i);
+        console.log("Valor da célula de data:", dataCelula);
+        console.log("Valor da variável dataSaida:", dataSaida);
+        console.log("Valor da célula de horário de saída:", horarioSaidaCelula);
+        console.log("Valor da variável horarioSaida:", horarioSaida);
+        console.log("Valor da célula de horário de retorno:", horarioRetornoCelula);
+        console.log("Valor da variável horarioRetorno:", horarioRetorno);
+      }
+
+function pintarInputsRepetidos() {
+  const dataSaida = document.getElementById('data-saida').value;
+  const horarioSaida = document.getElementById('horario-saida').value;
+  const horarioRetorno = document.getElementById('horario-retorno').value;
+
+  const tabela = document.getElementById('tabela-agendamento');
+  const linhas = tabela.getElementsByTagName('tr');
+  console.log('baixo o formato');
+
+  for (let i = 1; i < linhas.length; i++) {
+    const celulas = linhas[i].getElementsByTagName('td');
+    const dataCelula = moment(celulas[0].textContent, 'DD/MM/YYYY').format('YYYY-MM-DD');
+    const horarioSaidaCelula = celulas[1].textContent;
+    const horarioRetornoCelula = celulas[2].textContent;
+
+    if (dataCelula === dataSaida) {
+      console.log("Há datas iguais");
+      if (horarioSaidaCelula === horarioSaida && horarioRetornoCelula === horarioRetorno) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+        const h1Element = document.createElement('h1');
+        // Pintar os inputs de vermelho
+        document.getElementById('data-saida').classList.add('red-border');
+        document.getElementById('horario-saida').classList.add('red-border');
+        document.getElementById('horario-retorno').classList.add('red-border');
+
+        return;
+      }
+
+      if (horarioSaida > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+
+
+        // Pintar os inputs de vermelho
+        document.getElementById('horario-saida').classList.add('red-border');
+
+        return;
+      }
+
+      if (horarioRetorno > horarioSaidaCelula && horarioSaida < horarioRetornoCelula) {
+        const divAgendamentoBox2 = document.getElementById('agendamentobox2');
+        const h1Element = document.createElement('h1');
+
+        // Pintar os inputs de vermelho
+        document.getElementById('horario-retorno').classList.add('red-border');
+
+        return;
+      }
+    }
+  }
+  document.getElementById('data-saida').classList.replace('red-border', 'green-border');
+  document.getElementById('horario-saida').classList.replace('red-border', 'green-border');
+  document.getElementById('horario-retorno').classList.replace('red-border', 'green-border');
+
+
+
+}
+console.log('teste');
+
+
+document.getElementById('data-saida').addEventListener('keyup', pintarInputsRepetidos);
+document.getElementById('horario-saida').addEventListener('keyup', pintarInputsRepetidos);
+document.getElementById('horario-retorno').addEventListener('keyup', pintarInputsRepetidos);
+const placaInput = document.getElementById('placaInput');
+const atualizarPlacaButton = document.getElementById('atualizarPlaca');
+
+// Event listener para o input quando o foco sai
+placaInput.addEventListener('blur', () => {
+  const novoValorPlaca = placaInput.value.toUpperCase();
+
+  placa = novoValorPlaca;
+
+  // Chame a função para renderizar a tabela novamente
+  fetchAndRenderTableData();
+});
+
+// Event listener para o botão
+atualizarPlacaButton.addEventListener('click', () => {
+  // Observe que o código do botão pode ser mantido para acionar o evento manualmente, se necessário
+  const novoValorPlaca = placaInput.value;
+
+  placa = novoValorPlaca;
+
+  // Chame a função para renderizar a tabela novamente
+  fetchAndRenderTableData();
+});
+
+
+    
+	</script>
+
+
+
+
+</main>
+<footer class="o-footer text-center">
+  <p>Desenvolvido por Bruno de Oliveira.</p>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
