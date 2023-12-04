@@ -68,7 +68,7 @@
 
             // Preenche os dados da tabela com as 10 últimas linhas
             const tbody = document.createElement("tbody");
-            const last10Rows = rows.slice(-10);
+            const last10Rows = rows.slice(-30);
             last10Rows.forEach(rowData => {
                 const row = document.createElement("tr");
                 columnIndices.forEach((index, columnIndex) => {
