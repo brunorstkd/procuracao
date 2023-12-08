@@ -23,6 +23,17 @@
   <h2>Placa: IZD7A44</h2>
 </header>
 <main class="o-main">
+<div id="overlay"></div>
+
+<div id="popup">
+    <span id="close-btn" onclick="closePopup()">X</span>
+    <h2 class='aviso'>Aviso Geral</h2>
+    <p>Abastecimento: Se veículo estiver abaixo de 1/4, favor abastecer.</p>
+    <p>Chave: Sempre devolver a chave ao Jurídico.</p>
+    <p>Planilha: Preencher a planilha dentro do veículo</p>
+
+</div>
+
 <div class="text-center">
 		<div class="agendamentobox2 container" id='agendamentobox2'>
        <div class="grupo">
@@ -281,6 +292,7 @@ function formatTime(timeString) {
       divAgendamentoBox2.innerHTML = ''; // Limpa o conteúdo atual da div
       const h1Element = document.createElement('h1');
       h1Element.textContent = 'Agendamento realizado com sucesso';
+      openPopup()
       // Obtém a referência para o botão 'novoagendamento'
 const novoAgendamentoButton = document.getElementById('novoagendamento');
 
@@ -413,6 +425,15 @@ atualizarPlacaButton.addEventListener('click', () => {
 });
 
 
+function openPopup() {
+  document.getElementById('popup').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+  }
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  }
     
 	</script>
 
