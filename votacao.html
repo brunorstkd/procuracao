@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/stylo.css" />
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+  
+  <title>Agendamento GOL - RH 2.0</title>
+
+</head>
+<body>
+<header class="o-header container-fluid text-center">
+  <div class="col span_3">
+    <a id="logo" href="https://online-rs.github.io/reiter-rh/" data-supplied-ml-starting-dark="false" data-supplied-ml-starting="false" data-supplied-ml="false">
+      <img class="stnd default-logo dark-version" alt="REITER LOG" src="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png" srcset="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 1x, https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png 2x"> 
+    </a>  
+  </div>
+  <h1>Votação LAYANE</h1>
+  <h2>Concurso de Música</h2>
+</header>
+<main class="o-main">
+
+<div class="text-center">
+
+<div id="videoContainer" class="agendamentos container"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    var fontes = [
+        { nome: "Adriana", descricao: 'Essa vai ser a descrição', url: "https://www.youtube.com/watch?v=v45f9O-nsiE&t=235s" },
+        // Adicione mais fontes conforme necessário
+    ];
+
+    var players = [];
+
+    function onYouTubeIframeAPIReady() {
+        for (var i = 0; i < fontes.length; i++) {
+            var player = new YT.Player('videoContainer' + i, {
+                height: '315',
+                width: '560',
+                videoId: fontes[i].url,
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+
+            players.push(player);
+        }
+    };
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    };
+
+
+    window.onload = function () {
+        onYouTubeIframeAPIReady();};
+  </script>
+	
+  
+
+
+
+</main>
+<footer class="o-footer text-center">
+  <p>Desenvolvido por Bruno de Oliveira.</p>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
