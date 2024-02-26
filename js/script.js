@@ -5,6 +5,7 @@ const urlFran = "https://forms.gle/4VqxhH6YDGNCmUsW9";
 const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
 const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
+const urlpf = "https://forms.gle/BrULDNNXKGk7iFF56"
 
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaulaWhatsapp = "https://wa.me/5551993611444";
@@ -17,6 +18,7 @@ const spButton = document.getElementById("sp");
 const marioButton = document.getElementById("mario");
 const urlMario = 'https://forms.gle/ixG1srBmK1ZibMur7';
 const Fran2Button = document.getElementById("fran2");
+const pfButton = document.getElementById("pf");
 
 
 function paulawhatsapp(){
@@ -74,6 +76,9 @@ spButton.addEventListener("click",function() {
 
 marioButton.addEventListener("click",function() {
   window.open(urlMario);});
+
+pfButton.addEventListener("click",function() {
+  window.open(urlpf);});
 
 // Abrir multa, ocultar resto
 multaButton.addEventListener("click", function() {
