@@ -108,6 +108,40 @@ const jeferson = {atendente: urlJefferson, gestores: ["Thaynara","Francisco","Lu
 const fran = {atendente: urlFran, gestores: ["Rodolfo","Yuria","Wellington"]};
 const ilsa = {atendente: urlIlsa, gestores: []};
 
+function fetchAndRenderTableData(spreadsheetID) {
+  const url = `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json`;
+
+  return fetch(url)
+    .then(response => response.text())
+    .then(text => {
+      // Processa o texto e extrai os valores da coluna A
+      const columnAValues = extractColumnAValues(text);
+      return columnAValues;
+    });
+}
+
+// Função para extrair os valores da coluna A
+function extractColumnAValues(text) {
+  const values = [];
+  // Expressão regular para encontrar os valores da coluna A
+  const regex = /"v":"([^"]+)"/g;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    // O valor está na primeira captura (grupo 1) da expressão regular
+    values.push(match[1]);
+  }
+  return values;
+}
+
+// Exemplo de uso para Ilsa
+fetchAndRenderTableData('1WxkDS6AidNzQ7UOx4_OHL4yLSV7kRMwSRhBPEZ8Xzcw')
+  .then(columnAValues => {
+    const ilsaButton = document.getElementById("ilsa");
+    criarNovosBotoes(ilsaButton, ilsa.gestores, ilsa.atendente);
+  })
+  .catch(error => {
+    console.error('Erro ao buscar e processar os dados da Ilsa:', error);
+  });
 
 const ilsaButton = document.getElementById("ilsa");
 criarNovosBotoes(ilsaButton, alessandro.gestores, urlYasmim);

@@ -214,6 +214,10 @@ button{
     background-color: rgb(226, 43, 226);
 }
 
+.btn-verde{
+    background-color: rgb(100, 241, 136);
+}
+
 body {
     margin: 0;
     padding: 0;

@@ -6,6 +6,7 @@ const urlJefferson = "https://forms.gle/Tz51S2eHb5jaRkNR8";
 const urlPaula = "https://forms.gle/6RuZgxkZX47La1su5";
 const urlsp = "https://forms.gle/Vv6usvd26pv9egcK9";
 const urlpf = "https://forms.gle/BrULDNNXKGk7iFF56"
+const urlit = "https://forms.gle/kZ5RpbZgKVptodo69"
 
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaulaWhatsapp = "https://wa.me/5551993611444";
@@ -19,7 +20,7 @@ const marioButton = document.getElementById("mario");
 const urlMario = 'https://forms.gle/ixG1srBmK1ZibMur7';
 const Fran2Button = document.getElementById("fran2");
 const pfButton = document.getElementById("pf");
-
+const itButton = document.getElementById("it");
 
 function paulawhatsapp(){
   window.open(urlPaulaWhatsapp);
@@ -33,7 +34,7 @@ function recrutamentowhatsapp(){
 const jeffersonButton2 = document.getElementById("jefferson2");
 
   jeffersonButton2.addEventListener("click", function() {
-    window.open(urlJefferson);
+    window.open(urlFran);
   });
 
 
@@ -74,8 +75,11 @@ paulaButton.addEventListener("click",function() {
 spButton.addEventListener("click",function() {
   window.open(urlsp);});
 
+itButton.addEventListener("click",function() {
+  window.open(urlit);});
+
 marioButton.addEventListener("click",function() {
-  window.open(urlMario);});
+  window.open(urlIlsa);});
 
 pfButton.addEventListener("click",function() {
   window.open(urlpf);});
@@ -115,10 +119,8 @@ function criarNovosBotoes(botaoModelo, gestores, atendente) {
   }
 }
 
-// Exemplo de uso:
-const alessandro = {atendente: urlYasmim, gestores: ["Anderson", "Eduardo", "Gustavo", "Marcelo Ulrich"]};
-const jeferson = {atendente: urlJefferson, gestores: ["Gelison Torres", "Rafael"]};
-const fran = {atendente: urlFran, gestores: ["Yuria","Guilherme"]};
+const alessandro = {atendente: urlYasmim, gestores: ["Gelisson", "Cristian", "Rafael", "Roger", "Anderson", "Eduardo", "Gustavo", "Marcelo Ulrich"]};
+const fran = {atendente: urlFran, gestores: ["Cirilo","Tomas"]};
 const ilsa = {atendente: urlIlsa, gestores: ["Ismael", "Macelo Torres (German-NSR)", "Rodolfo"]};
 const mario = {atendente: urlMario, gestores: []};
 
@@ -126,7 +128,7 @@ const mario = {atendente: urlMario, gestores: []};
 const ilsaButton = document.getElementById("ilsa");
 criarNovosBotoes(ilsaButton, mario.gestores, urlMario);
 criarNovosBotoes(ilsaButton, alessandro.gestores, urlYasmim);
-criarNovosBotoes(ilsaButton, jeferson.gestores, urlJefferson);
+//criarNovosBotoes(ilsaButton, jeferson.gestores, urlJefferson);
 criarNovosBotoes(ilsaButton, fran.gestores, urlFran);
 criarNovosBotoes(ilsaButton, ilsa.gestores, urlIlsa);
 
