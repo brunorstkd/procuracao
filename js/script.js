@@ -10,6 +10,8 @@ const urlit = "https://forms.gle/kZ5RpbZgKVptodo69"
 
 const urlcurriculo = "https://wa.me/5551992684379";
 const urlPaulaWhatsapp = "https://wa.me/5551993611444";
+const urlPaulaWhatsapp2 = "https://wa.me/5511989301543";
+
 
 const multaButton = document.getElementById("multa");
 const paulaButton = document.getElementById("paula");
@@ -23,7 +25,7 @@ const pfButton = document.getElementById("pf");
 const itButton = document.getElementById("it");
 
 function paulawhatsapp(){
-  window.open(urlPaulaWhatsapp);
+  window.open(urlPaulaWhatsapp2);
 };
 
 function recrutamentowhatsapp(){
@@ -119,9 +121,10 @@ function criarNovosBotoes(botaoModelo, gestores, atendente) {
   }
 }
 
+//BOTÃO ALESSANDRO TRANSFERIDO PARA YASMIM
 const alessandro = {atendente: urlYasmim, gestores: ["Gelisson", "Cristian", "Rafael", "Roger", "Anderson", "Eduardo", "Gustavo", "Marcelo Ulrich"]};
-const fran = {atendente: urlFran, gestores: ["Cirilo","Tomas"]};
-const ilsa = {atendente: urlIlsa, gestores: ["Ismael", "Macelo Torres (German-NSR)", "Rodolfo"]};
+const fran = {atendente: urlFran, gestores: ["Cirilo","Tomas"]}; //MAIS ARMAZEN SECO E CONGELADO
+const ilsa = {atendente: urlIlsa, gestores: ["Ismael", "Macelo Torres (German-NSR)", "Rodolfo"]}; //MAIS ADMINISTRATIVO
 const mario = {atendente: urlMario, gestores: []};
 
 
